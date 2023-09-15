@@ -1,0 +1,1232 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,800;1,300;1,500;1,600;1,700;1,800&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: "Poppins", sans-serif;
+}
+input:focus,
+textarea:focus {
+    border-bottom: 2px solid blue !important;
+    outline: none;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #dbdbdb;
+}
+.bgimg-active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 101vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+}
+.bgimg-navActive {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 101vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+}
+:root {
+    --primary: #007bff;
+    --light: #4899e9ee;
+    --dark: #313e5f;
+}
+
+header {
+    display: flex;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    width: 100%;
+    position: fixed;
+    padding: 18px;
+    justify-content: space-between;
+    background-color: white;
+}
+.navBar {
+    display: flex;
+    gap: 30px;
+    padding-right: 40px;
+}
+
+.logoContainer {
+    padding-left: 10px;
+}
+.logoContainer h1 {
+    padding-top: 9px;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.logoContainer h1 span {
+    color: var(--primary);
+}
+.navBar a {
+    font-size: 14px;
+    color: black;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 14px;
+    transition: 0.7s;
+}
+.navBar li {
+    padding: 6px 5px 8px 7px;
+
+    transition: 0.7s;
+    border-radius: 20px;
+}
+.navBar li:hover {
+    color: white;
+    transition: 0.7s;
+    font-weight: 700;
+    transform: scale(1.1);
+    background-color: var(--dark);
+}
+.navBar li:hover a {
+    color: white;
+    transition: 0.7s;
+}
+.navBtn {
+    display: none;
+    right: 0;
+    margin-right: 15px;
+    position: absolute;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    transition: 1s;
+    cursor: pointer;
+}
+.navBtn span {
+    display: block;
+    width: 33px;
+    height: 3px;
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 1;
+    border-radius: 16px;
+    background-color: black;
+    transform-origin: 0 0;
+    transition: 0.4s;
+}
+#btn1,
+#btn2,
+#btn3 {
+    transition: 1s;
+}
+#btn3.active {
+    transform: translateX(20px);
+    opacity: 0;
+    transition: 1s;
+}
+#btn1.active {
+    background-color: crimson;
+    transition: 1s;
+    transform: translate(4.7px, -5px) rotate(45deg);
+}
+#btn2.active {
+    background-color: crimson;
+
+    transition: 1s;
+    transform: translate(2px, 2px) rotate(-45deg);
+}
+
+.slotSection {
+    margin-top: 50px;
+}
+
+/* Footer Styling */
+footer {
+    background: #222222;
+    color: #fff;
+    padding: 25px 0;
+    bottom: 0;
+}
+footer .row {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    justify-content: space-evenly;
+}
+.foot-1 {
+    flex-basis: 30%;
+    height: 260px;
+    text-align: center;
+    padding-top: 40px;
+    color: white;
+}
+.footDescription {
+    margin-top: 10px;
+    padding: 10px;
+}
+.foot-1 .socials {
+    font-size: 20px;
+    margin: 20px;
+    letter-spacing: 10px;
+}
+.foot-2 {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 39%;
+    padding: 50px 80px 50px 110px;
+    gap: 20px;
+    height: 260px;
+    background-color: transparent;
+}
+
+.foot-2 i {
+    padding: 13px;
+    border-radius: 50%;
+    background-color: var(--dark);
+    border: none;
+}
+
+hr {
+    display: none;
+}
+.foot-2 span {
+    font-size: 15px;
+
+    letter-spacing: 1px;
+}
+.foot-3 {
+    flex-basis: 25%;
+    height: 260px;
+    padding: 20px;
+
+    text-align: center;
+}
+.foot-3 span {
+    border-bottom: solid 2px white;
+    font-size: 27px;
+    padding: 4px 10px;
+}
+
+.foot-3 ul {
+    margin-top: 20px;
+    font-size: 18px;
+    display: grid;
+    gap: 5px;
+}
+
+.alertBox {
+    z-index: 999;
+
+    position: absolute;
+    width: 300px;
+    height: 40px;
+    color: black;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    top: 0;
+    margin-top: 10px;
+    padding-left: 4px;
+    border-radius: 20px;
+    left: 41%;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.loginMain {
+    margin-top: -45px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    image-orientation: flip;
+    min-height: 110vh;
+    overflow: hidden;
+    z-index: 1080;
+    padding: 0.8rem 0.8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.box {
+    position: relative;
+    width: 28%;
+    max-height: 700px;
+
+    max-width: 1020px;
+    height: 610px;
+    margin-top: 3%;
+    background-color: rgb(237, 237, 237);
+    border-radius: 3.3rem;
+    box-shadow: 0 30px 40px -30px rgba(0, 0, 0, 0.27);
+}
+
+.inner-box {
+    position: absolute;
+    width: calc(200% - 4.1rem);
+    height: calc(100% - 4.1rem);
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.forms-wrap {
+    position: absolute;
+    height: 100%;
+    width: 45%;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    transition: 0.8s ease-in-out;
+}
+
+.loginMain form {
+    padding: 0px 25px;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    transition: opacity 0.02s 0.4s;
+}
+
+form.sign-up-form {
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo h2 {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    border-left: 5px solid var(--primary);
+    margin-top: 10px;
+    padding: 1px;
+    width: 100%;
+    color: black;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    padding-left: 7px;
+}
+.logo h2 span {
+    color: var(--primary);
+}
+.actual-form h6 {
+    color: black;
+    font-weight: 400;
+    font-size: 0.75rem;
+    display: inline;
+    margin-top: -100px;
+}
+
+.heading h4 {
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: 600;
+    color: #151111;
+}
+
+.toggle {
+    color: #151111;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 800;
+    transition: 0.3s;
+}
+
+.toggle:hover {
+    color: var(--light);
+}
+
+.input-wrap {
+    position: relative;
+    height: 37px;
+    margin-bottom: 2rem;
+}
+
+.input-field {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #bbb;
+    padding: 0;
+    font-size: 0.95rem;
+    color: #151111;
+    transition: 0.4s;
+}
+
+label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.95rem;
+    color: black;
+    pointer-events: none;
+    transition: 0.4s;
+}
+
+.input-field.active {
+    border-bottom-color: #151111;
+}
+
+.input-field.active + label {
+    font-size: 0.75rem;
+    top: -2px;
+}
+
+.loginButton {
+    display: inline-block;
+    width: 100%;
+    height: 43px;
+    background-color: var(--dark);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.loginButton:hover {
+    background-color: #4b5a6971;
+    color: black;
+}
+
+.text {
+    color: black;
+    font-size: 0.8rem;
+    margin-bottom: 35px;
+    margin-top: -30px;
+    text-align: right;
+}
+
+.text a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.text a:hover {
+    color: #5f90d1;
+    text-decoration: underline;
+}
+
+.loginMain.sign-up-mode form.sign-in-form {
+    opacity: 0;
+    transition: 0.4s;
+    pointer-events: none;
+}
+
+.loginMain.sign-up-mode form.sign-up-form {
+    opacity: 1;
+    pointer-events: all;
+}
+
+form.sign-up-form {
+    transform: translateX(100%);
+    transition: 0.8s;
+}
+.loginMain.sign-up-mode form.sign-up-form {
+    transform: translateX(0%);
+}
+#RepMsg1 {
+    color: rgb(255, 0, 0);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    margin: 10px 0px;
+}
+#validationSpan {
+    color: green;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+#RepMsg2 {
+    color: rgb(255, 0, 0);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    margin: 10px 0px;
+}
+#RepMsg3 {
+    color: rgb(255, 0, 0);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    margin: 10px 0px;
+}
+.social {
+    text-align: center;
+    margin-top: 12px;
+    gap: 100px;
+}
+.social span:nth-child(1) {
+    font-size: 14px;
+    font-weight: 500;
+}
+.social .socSpan {
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+.socialLinks {
+    display: flex;
+    margin-top: 13px;
+    justify-content: space-between;
+}
+
+.social i {
+    width: 120px;
+    border-radius: 10px;
+    padding: 10px 10px 10px 5px;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.527);
+    background-color: rgba(164, 164, 163, 0.388);
+    color: #080808;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.social i:nth-child(1) {
+    color: rgb(233, 73, 73);
+}
+.social i:nth-child(2) {
+    color: #316df0;
+}
+.social i:hover {
+    background-color: rgb(158, 157, 157);
+}
+
+/*OTP VERIFICATION*/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.otpSEC.active {
+    transform: scale(1);
+    transition: all 0.4s;
+    z-index: 1080;
+}
+.otpSEC {
+    transform: scale(0);
+    top: 0;
+    position: absolute;
+    position: fixed;
+    width: 100%;
+    z-index: 1080;
+    display: flex;
+    justify-content: center;
+}
+.OTPbox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 28%;
+    max-width: 1020px;
+    height: 490px;
+    margin-top: 6%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 3rem;
+    box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
+}
+.OTPheading {
+    font-size: 1.6em;
+    text-transform: uppercase;
+    border-left: 5px solid rgb(93, 128, 164);
+    margin-top: -60%;
+    padding: 2px;
+    color: black;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    padding-left: 25px;
+}
+.OTPheading span {
+    color: var(--primary);
+}
+.OTPcontent {
+    display: grid;
+    margin-left: -25%;
+    margin-top: 10%;
+    width: 145%;
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: 600;
+    color: #151111;
+}
+.OTPForm {
+    position: relative;
+    max-width: 260px;
+    width: 100%;
+    margin-top: 26%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.verifyBtn {
+    display: inline-block;
+    width: 100%;
+    height: 43px;
+    background-color: #33414d;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    font-size: 1.1rem;
+    transition: 0.3s;
+
+    transition: 0.5s;
+}
+
+.verifyBtn:hover {
+    background-color: #2a4d6455;
+    color: black;
+}
+.resendBtn:hover {
+    color: rgb(0, 0, 0);
+    background-color: #2a4d6455;
+}
+
+.resendBtn {
+    margin-bottom: 12%;
+    width: 55%;
+    height: 43px;
+    background-color: #55c170;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    font-size: 1.1rem;
+    margin-top: 10%;
+    transition: 0.3s;
+}
+.resendBtn.unavailable {
+    border: solid 2px red;
+    color: rgb(0, 0, 0);
+    background-color: #2a4d6455;
+    cursor: not-allowed;
+}
+.OTPForm input {
+    margin-bottom: 27px;
+    margin-top: 5%;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+    font-weight: 600;
+    outline: none;
+    height: 8;
+    border-bottom: 2px black solid;
+}
+.Btns {
+    display: flex;
+    justify-content: center;
+}
+#otpTimer {
+    visibility: hidden;
+}
+
+/*success*/
+
+.doneSEC.active {
+    transform: scale(1);
+    transition: all 0.4s;
+    z-index: 1080;
+}
+
+.doneSEC {
+    transform: scale(0);
+    top: 0;
+    position: absolute;
+    position: fixed;
+    width: 100%;
+    z-index: 1080;
+    display: flex;
+    justify-content: center;
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+.doneBox {
+    border-radius: 8px;
+    margin: 100px 10px;
+    text-align: center;
+    padding-top: 25px;
+    align-items: center;
+    transform: translateY(3.8rem);
+    background-color: rgb(207, 207, 207);
+    width: 30rem;
+    height: 20rem;
+}
+.doneBox h1 {
+    font-size: 25px;
+    margin-bottom: 4%;
+    font-weight: 500;
+    margin-top: 10px;
+}
+.doneBox h2 {
+    font-size: 22px;
+
+    font-weight: 400;
+    margin-top: 2%;
+}
+.doneBox span {
+    color: rgba(128, 128, 128, 0.56);
+    padding-top: 2%;
+}
+.doneBox h3 {
+    text-align: center;
+    font-weight: 600;
+    color: grey;
+    margin-bottom: 4%;
+}
+.doneBox a {
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: rgba(122, 118, 118, 0.727);
+    padding: 12px 35px;
+    border-radius: 3px;
+    color: white;
+}
+
+.userBox {
+    margin-top: 4%;
+}
+.userBox form input {
+    color: rgb(102, 102, 102);
+    text-align: center;
+    width: 23rem;
+    border: none;
+    font-size: 1.5rem;
+    background-color: white;
+    height: 3rem;
+    margin-left: 2%;
+}
+.userBox form input:hover {
+    border: solid 2px red;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff55;
+    cursor: not-allowed;
+}
+.userBox form {
+    float: left;
+    display: flex;
+    justify-content: flex-start;
+}
+.userBox span {
+    font-size: 27px;
+    font-weight: 500;
+}
+.inputDiv {
+    margin-top: 10%;
+    width: 35rem;
+    display: flex;
+}
+table {
+    width: 100rem;
+}
+
+/* index page
+ carousel slider
+styling
+*/
+.carousel {
+    width: 100%;
+    height: 70vh;
+    position: relative;
+}
+.carousel-heading {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    color: black;
+    text-align: center;
+}
+.carousel-heading h1 {
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: 2px;
+    background-color: rgba(213, 213, 213, 0.707);
+    padding: 3px 20px;
+    border-radius: 50px;
+    text-align: center;
+    margin-top: 25px;
+}
+.carousel > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: 200ms opacity ease-in-out;
+    transition-delay: 200ms;
+}
+
+.slide > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.slide[data-active] {
+    opacity: 1;
+    transition-delay: 2ms;
+}
+
+.carousel-button {
+    position: absolute;
+    z-index: 1;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    margin-right: -15px;
+    margin-left: -15px;
+    top: 50%;
+    width: 150px;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+    border-radius: 0.25rem;
+    height: 100%;
+    padding: 0 0.5rem;
+}
+
+.imageSelector {
+    margin-top: -40px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.imageSelector ol {
+    display: flex;
+}
+
+.imageSelector input[type="radio"] {
+    display: none;
+}
+
+.imageSelector ol li span {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 31px;
+    transition: 0.25s ease;
+    padding: 10px;
+}
+
+.imageSelector ol li span:before {
+    width: 30px;
+    height: 4px;
+    content: "";
+    background-color: rgba(164, 164, 164, 1);
+}
+
+.imageSelector input[type="radio"]:checked + span:before {
+    background-color: white;
+}
+
+.carousel-button.prev {
+    left: 1rem;
+}
+
+.carousel-button.next {
+    right: 1rem;
+}
+/*Reservation Styling*/
+
+.reserve {
+    padding: 42px 0px;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.divForm {
+    height: 100%;
+    border-radius: 20px;
+    background-color: white;
+    flex-basis: 45%;
+    -webkit-box-shadow: 12px 12px 28px 7px rgba(144, 152, 158, 1);
+    -moz-box-shadow: 12px 12px 28px 7px rgba(144, 152, 158, 1);
+    box-shadow: 12px 12px 28px 7px rgba(144, 152, 158, 1);
+}
+
+.formTitle {
+    text-transform: uppercase;
+    font-weight: 500;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.reservationForm {
+    height: auto;
+    padding: 25px 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
+.reservationForm input,
+select {
+    margin-top: 6px;
+    width: 100%;
+    color: black;
+    height: 35px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 0px 10px;
+}
+
+.reservationForm input:focus {
+    outline: none;
+}
+
+.input-fields span {
+    font-weight: 500;
+    margin-left: 5px;
+    color: rgba(38, 38, 38, 0.769);
+    margin-bottom: 10px;
+}
+
+.buttons-field {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.buttons-field button {
+    width: 100%;
+    font-size: 18px;
+    background-color: rgb(58, 58, 58);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    text-transform: uppercase;
+    height: 40px;
+}
+
+.buttons-field button:nth-child(1):hover {
+    background-color: #218838;
+}
+
+.buttons-field button:nth-child(2):hover {
+    background-color: crimson;
+}
+
+.reservationContent {
+    flex-basis: 40%;
+}
+.reservationTitle {
+    color: black;
+    text-align: center;
+    margin-top: -2px;
+    margin-bottom: 10px;
+    background-color: var(--light);
+    text-transform: uppercase;
+    font-size: 22px;
+}
+.bestPicks {
+    height: 95%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.listImg {
+    height: 22vh;
+    margin-top: 5px;
+    width: 95%;
+}
+
+.listingBox {
+    padding: 7px 14px;
+    background-color: rgb(180, 180, 180);
+    height: 40vh;
+    width: 100%;
+    border-radius: 15px;
+    transition: 0.7s;
+}
+
+.listingBot:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+    transition: 0.7s;
+    background-color: white;
+}
+
+.listingBox h1 {
+    font-weight: 500;
+    text-align: left;
+    font-size: 17px;
+}
+
+.price {
+    display: flex;
+    gap: 10px;
+}
+
+.price span {
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+    padding: 2px 14px;
+    border-radius: 25px;
+}
+
+.listingBox .description {
+    margin-top: 10px;
+    overflow: hidden;
+}
+/*
+
+
+RESPONSIVE CODE
+MEDIA QUERIES
+
+
+*/
+@media (max-width: 850px) {
+    .loginMain {
+        margin-top: 40%;
+    }
+    .box {
+        margin-bottom: -10%;
+        height: auto;
+        width: 100%;
+        margin-left: 0;
+        overflow: hidden;
+    }
+
+    .inner-box {
+        position: static;
+        transform: none;
+        width: revert;
+        height: revert;
+        padding: 2rem;
+    }
+
+    .forms-wrap {
+        position: revert;
+        width: 100%;
+        height: auto;
+    }
+
+    form {
+        max-width: revert;
+        padding: 1.5rem 2.5rem 2rem;
+        transition: transform 0.8s ease-in-out, opacity 0.45s linear;
+    }
+
+    .heading {
+        margin: 2rem 0;
+    }
+
+    form.sign-up-form {
+        transform: translateX(100%);
+    }
+
+    .loginMain.sign-up-mode form.sign-in-form {
+        transform: translateX(-100%);
+        transition: 0.8s;
+    }
+
+    .loginMain.sign-up-mode form.sign-up-form {
+        transform: translateX(0%);
+    }
+}
+@media (max-width: 62em) {
+    .navBtn {
+        display: block;
+    }
+    .navBar {
+        display: none;
+    }
+}
+
+@media (max-width: 530px) {
+    .loginMain {
+        margin-top: -50px;
+    }
+    .loginMain {
+        font-size: calc(50px-10px);
+    }
+
+    .box {
+        border-radius: 2rem;
+    }
+
+    .inner-box {
+        padding: 1rem;
+    }
+
+    form {
+        padding: 1rem 2rem 1.5rem;
+    }
+}
+@media (max-height: 680px) {
+    .loginMain {
+        padding-top: 5rem;
+        margin-top: 0%;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .OTPheading {
+        visibility: hidden;
+    }
+    .OTPbox {
+        width: 80%;
+        margin-top: 30%;
+        height: 23rem;
+        padding-top: 65px;
+    }
+    .OTPForm {
+        margin-top: 0%;
+    }
+    .OTPcontent {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+    .otpSEC.active {
+        transform: scale(1);
+        transition: all 0.4s;
+        z-index: 1080;
+    }
+
+    .resendBtn {
+        font-size: 0.9rem;
+        width: 57%;
+    }
+}
+
+@media only screen and (max-width: 385px) {
+    .OTPbox {
+        padding-top: 65px;
+    }
+    .otpSEC.active {
+        transform: scale(1);
+        transition: all 0.4s;
+        z-index: 1080;
+    }
+    .resendBtn {
+        font-size: 0.9rem;
+        width: 57%;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .doneSEC {
+        transform: scale(0);
+    }
+    .doneSEC.active {
+        transform: scale(1);
+    }
+}
+@media only screen and (max-width: 850px) {
+    .doneSEC {
+        transform: scale(0);
+    }
+
+    .doneSEC.active {
+        transform: scale(1);
+    }
+}
+@media (max-width: 62em) {
+    .reserve {
+        padding: 10px;
+        display: grid;
+        height: auto;
+    }
+    .reservationContent {
+        margin-top: 50px;
+    }
+    .box {
+        padding: 20px 10px;
+    }
+    .bestPicks {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 50px;
+    }
+    .loginMain {
+        flex-direction: column-reverse;
+    }
+    .foot-1,
+    .foot-3 {
+        padding: 10px;
+    }
+    .foot-2 {
+        text-align: center;
+        padding: 10px;
+    }
+
+    footer .row {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        gap: 20px;
+    }
+    hr {
+        display: block;
+    }
+
+    .formbox {
+        width: 100%;
+    }
+    .loginForm {
+        padding: 40px;
+    }
+}
