@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 use App\Mail\WelcomeEmail;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
-
 use Illuminate\Routing\Controller;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 use Seshac\Otp\Otp;
-
+use Laravel\Socialite\Facades\Socialite;
 
 class UserController extends Controller
 {
@@ -66,12 +64,9 @@ class UserController extends Controller
         );
 
         $inputData['password'] = bcrypt(($inputData['password']));
-
         $otp = rand(10000, 99999);
         $inputData['otp'] = $otp;
         $user = User::create($inputData);
-
-
         $this->sendOTPEmail($inputData['fullName'], $inputData['email'], $otp);
     }
     public function logout(Request $request)
@@ -122,6 +117,45 @@ class UserController extends Controller
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput();
     }
 
+    public function googleLogin(){
+    return Socialite::driver('google')->redirect();
+    }
+    public function googleHandle(Request $request){
+        try {
+            $user= Socialite::driver('google')->user();
+            $findUser = User::where('email', $user['email'])->first();
+            print($findUser);    
+        if(!$findUser){
+                $findUser=new User();
+                $findUser->fullName=$user->name;
+                $findUser->email=$user->email;
+                $findUser->otp="00000";
+                
+                $findUser->password=rand(1000000000, 99999999999);
+                $findUser->is_verified=1;
+                $findUser->email_verified_at = \Carbon\Carbon::now();
+
+                $findUser->save();
+                $request->session()->regenerate();
+                session()->flash('createMessage', 'Logged in Successfully!');
+                session()->flash('messageColor', 'lime'); 
+                return redirect()->route('index'); 
+
+        }
+        return redirect('/users')->withErrors(['email' => 'The email is already associated with an account. Try logging in with email and password.'])->onlyInput();
+
+            // session()->put('id',$findUser->id);
+            // session()->put('type',$findUser->type);
+            // return redirect('/');
+
+            // session()->flash('createMessage', 'The user already exist with this email.');
+            // session()->flash('messageColor', 'crimson'); 
+
+        
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
+        }
 
     public function resendOTP(Request $request)
     {

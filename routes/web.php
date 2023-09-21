@@ -48,8 +48,10 @@ Route::get('/email/verify/link/{otp}', [UserController::class, 'VerifyLink']);
 
 
 
+//googleLogin
+Route::get('/googleLogin', [UserController::class, 'googleLogin']);
 
-
+Route::get('/users/google/callback', [UserController::class, 'googleHandle']);
 
 
 
