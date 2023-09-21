@@ -142,7 +142,7 @@ class UserController extends Controller
                 return redirect()->route('index'); 
 
         }
-        return redirect('/users')->withErrors(['email' => 'The email is already associated with an account. Try logging in with email and password.'])->onlyInput();
+        return redirect('/user')->withErrors(['email' => 'The email is already associated with an account. Try logging in with email and password.'])->onlyInput();
 
             // session()->put('id',$findUser->id);
             // session()->put('type',$findUser->type);
