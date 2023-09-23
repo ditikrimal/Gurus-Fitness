@@ -54,6 +54,9 @@ Route::get('/googleLogin', [UserController::class, 'googleLogin']);
 Route::get('/users/google/callback', [UserController::class, 'googleHandle']);
 
 
+//userProfile routes
+Route::get('/user/profile', [UserController::class, 'userProfile'])->middleware('auth');
+
 
 
 //Below code will be used while making reservations in the website

@@ -45,10 +45,9 @@
                                     <span>OR</span>
                                     <br>
                                     <div class="socialLinks">
-                                        <i class="fab fa-google"><a style="text-decoration: none; color: black;"
-                                                href="{{URL::to('googleLogin')}}">Google</a></i>
-                                        <i class="fab fa-facebook"><a style="text-decoration: none; color: black;"
-                                                href="https://www.facebook.com/login.php/"> Facebook</a></i>
+                                        <i class="fab fa-google" style="width:100%;"><a style="text-decoration: none; color: black;margin-left:10px; "
+                                                href="{{URL::to('googleLogin')}}">Continue with Google</a></i>
+                  
                                     </div>
                                 </div>
                             </div>
@@ -107,10 +106,9 @@
                                     <span>OR</span>
                                     <br>
                                     <div class="socialLinks">
-                                        <i class="fab fa-google"><a style="text-decoration: none; color: black;"
-                                                href="https://mail.google.com/"> Google</a></i>
-                                        <i class="fab fa-facebook"><a style="text-decoration: none; color: black;"
-                                                href="https://www.facebook.com/login.php/"> Facebook</a></i>
+                                        <i class="fab fa-google" style="width:100%;"><a style="text-decoration: none; color: black;margin-left:10px; "
+                                                href="{{URL::to('googleLogin')}}">Continue with Google</a></i>
+                  
                                     </div>
                                 </div>
                             </div>

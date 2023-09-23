@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/eac1eb5eeb.js"></script>
-    <link rel="stylesheet" href='css/app.css'>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href='images/icon.ico'>
 
     <!-- </Required Scripts> -->
@@ -21,7 +22,11 @@
 
 
 <title>United Limited</title>
+<x-profile-alert-banner/>
+
+
 <header>
+
     <div class="logoContainer">
         <a href="/">
             <h1>United <span>Limited</span></h1>
@@ -64,7 +69,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/signup">
+                    <a href="/user/profile">
                         <i class="fa-solid fa-user"></i>
 
                         profile
@@ -147,7 +152,9 @@
 
 </body>
 
-<script src='script/app.js'></script>
+<script src="{{ asset('script/app.js') }}" >
+
+
 
 
 <footer>
@@ -194,7 +201,7 @@
     <h1 style="font-size: 15px; font-weight:500;text-align:center;margin-top:17px;">Copyright © United Limited 2023. All
         rights reserved.</h1>
 </footer>
-<script src="//unpkg.com/alpinejs" defer></script>
+<script src="{{ asset('//unpkg.com/alpinejs') }}" src="" defer></script>
 
 <x-flashMessage />
 

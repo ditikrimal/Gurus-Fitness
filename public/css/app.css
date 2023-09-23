@@ -8,9 +8,7 @@
     list-style: none;
     font-family: "Poppins", sans-serif;
 }
-input:focus,
-textarea:focus {
-    border-bottom: 2px solid blue !important;
+*:focus{
     outline: none;
 }
 
@@ -50,10 +48,20 @@ body {
     --light: #4899e9ee;
     --dark: #313e5f;
 }
-
+.infoFieldAlert{
+    text-align: center;
+    background-color: crimson;
+    text-transform: uppercase;
+    color: white;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    padding: 5px;
+    text-decoration: underline;
+}
 header {
     display: flex;
-    backdrop-filter: blur(10px);
     z-index: 2;
     width: 100%;
     position: fixed;
@@ -504,7 +512,8 @@ form.sign-up-form {
 .socialLinks {
     display: flex;
     margin-top: 13px;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: center;
 }
 
 .social i {
@@ -763,6 +772,143 @@ input::-webkit-inner-spin-button {
 table {
     width: 100rem;
 }
+/* user profile styling */
+.profileSection{
+color:white;
+    height: 90vh;
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profileMain{
+ background-color: #2a2e34;
+ width: 100%;
+ height: 100%;
+
+ display: flex;
+ flex-direction: column;
+}
+.profileHeading{
+    flex-basis:17%;
+    height: 100%;
+  display: flex;
+  padding: 0px 0px 0px 30px;
+align-items: center;
+    border-bottom: solid #555458 1px;
+}
+.profileHeading h1{
+    margin-left: 20px;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+.profileHeading i{
+    font-size:3.4rem;
+    margin-left: 15px;
+}
+.actionsDiv{
+    flex-basis: 85%;
+    display: flex;
+}
+.profileOptions{
+flex-basis: 23%;
+border-right: solid #555458 1px;
+display: flex;
+padding: 40px 0px 0px 50px;
+gap: 50px;
+flex-direction: column;
+}
+
+.profileOptions div{
+
+    display: flex;
+    cursor: pointer;
+    gap :20px;
+    font-size: 1.17rem;
+}
+.profileOptions div:nth-child(1){
+    color:#007bff;
+}
+.profileOptions div i{
+    padding-top: 3.7px;
+}
+
+.optionContent{
+    flex-basis: 87%;
+    padding: 25px 35px;
+}
+.formContents{
+    flex-basis: 80%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 47% 47%;
+    column-gap: 5%;
+    row-gap:25%;
+}
+.formContents span{
+    font-weight: 500;
+}
+.formContents input{
+    background-color:#23262a;
+    margin-top: 5px;
+    width: 100%;
+    font-size: 17px;
+    padding: 5px 12px;
+    border: solid 0.002rem white;
+    border-radius: 10px;
+    height: 75%;
+    color:#edf0f3;
+}
+.formContents input:invalid{
+    border: solid 0.002rem red;
+    content: "Missing required field";
+}
+.formContents input:valid{
+    border: solid 0.002rem rgb(10, 250, 10);
+}
+.formContents input::placeholder{
+    color: crimson;
+    padding-left: 20px;
+    background-image: url(../images/triangle-exclamation-solid.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+.profileForm{
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+}
+.profileFormBtns{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.profileFormBtns input{
+    width: 200px;
+    padding: 10px;
+    border: solid 1px white;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #23262a;
+    transition: 0.7s;
+}
+.profileFormBtns input:hover{
+   background-color:  #007bff;
+   border: none;
+   transform: scale(1.1);
+   transition: 0.7s;
+  
+}
+.securityFormDiv{
+    display: none;
+}
+.infoFormDiv{
+    display: block;
+}
+
 
 /* index page
  carousel slider
@@ -1028,6 +1174,8 @@ select {
     margin-top: 10px;
     overflow: hidden;
 }
+
+
 /*
 
 
@@ -1185,6 +1333,12 @@ MEDIA QUERIES
     }
 }
 @media (max-width: 62em) {
+    .loginMain form {
+        padding: 0px 10px;
+    }
+    .logo h2{
+        font-size: 1.2em;
+    }
     .reserve {
         padding: 10px;
         display: grid;
