@@ -152,8 +152,8 @@
 
 </body>
 
-<script src="{{ asset('script/app.js') }}" >
 
+<script src="{{ asset('script/app.js') }}"></script>
 
 
 
