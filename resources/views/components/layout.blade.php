@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,18 +10,18 @@
 
 
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <script src="https://kit.fontawesome.com/eac1eb5eeb.js"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href='images/icon.ico'>
+    <link href='images/icon.ico' rel="icon" type="image/x-icon">
 
     <!-- </Required Scripts> -->
 </head>
 
 
 <title>United Limited</title>
-<x-profile-alert-banner/>
+<x-profile-alert-banner />
 
 
 <header>
@@ -77,7 +76,7 @@
                 </li>
                 <li>
 
-                    <form method="POST" action="/logout">
+                    <form action="/logout" method="POST">
                         @csrf
                         <button class="logoutBtn" style="background-color: transparent; border:none;" type="submit">
                             <a><i class="fa-solid fa-right-to-bracket"></i> Logout</a>
@@ -152,10 +151,7 @@
 
 </body>
 
-<script src="{{ asset('script/app.js') }}" >
-
-
-
+<script src="{{ asset('script/app.js') }}"></script>
 
 <footer>
     <div class="row">

@@ -3,7 +3,11 @@
         <div class="profileMain">
             <div class="profileHeading">
                 <i class="fa-regular fa-circle-user"></i>
-                <h1>Hello User</h1>
+                <h1>Hello, {{ $user->fullName }}</h1>
+
+                <p id='RepMsg2' style="float: right"></p>
+
+
             </div>
             <div class="actionsDiv">
                 <div class="profileOptions">
@@ -13,34 +17,36 @@
 
                 </div>
                 <div class="optionContent">
-                    <div id="userInfoForm" class="infoFormDiv">
-                        <p id='RepMsg2'></p>
-                        <p id="validationSpan"></p>
-                        <form action="" id="infoForm" class="profileForm">
+                    <div class="infoFormDiv" id="userInfoForm">
+                        <form class="profileForm" id="infoForm">
                             @csrf
+                            @method('post')
                             <div class="formContents">
 
-                                <div><span>Full Name</span><input value="{{ $user->fullName }}" type="text"
-                                        placeholder='Missing' required></div>
-                                <div><span>Email</span><input value="{{ $user->email }}" type="text"
-                                        placeholder='Missing' required></div>
-                                <div><span>Address</span><input type="text" placeholder='Missing' required></div>
-                                <div><span>City</span><input type="text" placeholder='Missing' required></div>
-                                <div><span>Country</span><input type="text" placeholder='Missing' required></div>
-                                <div><span>Phone</span><input type="text" placeholder='Missing' required></div>
+                                <div><span>Full Name</span><input name="fullName" placeholder='Missing' type="text"
+                                        value="{{ $user->fullName }}"></div>
+                                <div><span>Email</span><input disabled name="email" placeholder='Missing'
+                                        type="text" value="{{ $user->email }}"></div>
+                                <div><span>Phone</span><input name="phone" placeholder='Missing' type="text"
+                                        value="{{ $user->phone }}"></div>
+                                <div><span>Address</span><input name="address" placeholder='Missing' type="text"
+                                        value="{{ $user->address }}"></div>
+                                <div><span>City</span><input name="city" placeholder='Missing' type="text"
+                                        value="{{ $user->city }}"></div>
+                                <div><span>Country</span><input name="country" placeholder='Missing' type="text"
+                                        value="{{ $user->country }}"></div>
 
                             </div>
                             <div class="profileFormBtns">
                                 <input type="submit" value="UPDATE">
-                                <input type="button" value="CANCEL">
 
                             </div>
                         </form>
                     </div>
-                    <div id="userSecurityForm" class="securityFormDiv">
+                    <div class="securityFormDiv" id="userSecurityForm">
                         <form action="" class="profileForm">
                             <div class="formContents">
-                                <div><span>Email</span><input type="text"></div>
+                                <div><span>Email</span><input disabled type="text" value="{{ $user->email }}"></div>
                                 <div><span>Current Password</span><input type="text"></div>
                                 <div><span>New Password</span><input type="text"></div>
                                 <div><span>Confirm New Password</span><input type="text"></div>
@@ -59,74 +65,45 @@
             </div>
         </div>
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
     <script type=text/javascript>
         $(document).ready(function() {
-
             $('#infoForm').submit(function(event) {
-
                 event.preventDefault();
-                // Prevent the form from submitting via the browser
                 var formData = $(this).serialize(); // Get the form data
                 $.ajax({
-                    url: '/user/profile/update', // The route to handle the request
+                    url: '/user/update/profile', // The route to handle the request
                     type: 'POST',
                     data: formData,
                     beforeSend: function() {
-                        $('#RepMsg2').fadeIn();
 
-                        $('#RepMsg2').html(
-                            '<i class="fa-solid fa-check" style="color:green; font-size:11px;"></i> <span style="color:green;">Sending OTP...</span>'
-                        );
                     },
                     success: function(response) {
 
+                        $('#RepMsg2').html(
+                            '<i class="fa-solid fa-check" style="color:lime; font-size:15px;"></i> <span style="font-size:17px; color:lime;">Profile updated successfully</span>'
+                        );
 
-                        $('#bgimg').addClass("bgimg-active");
-                        $('#otpVerify').addClass('active');
-
+                        setTimeout(function() {
+                            $('#RepMsg2').fadeOut('slow');
+                        }, 4000);
                     },
                     error: function(response) {
-                        // Handle the error here
-                        if (response.status === 422) {
-                            var errors = response.responseJSON.errors;
-                            if (errors.fullName) {
-                                $('#RepMsg2').fadeIn();
+                        if (response.status == 404) {
 
-                                $('#RepMsg2').html(
-                                    '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
-                                    errors.fullName[0]
-                                );
-                                // $('#RepMsg').text(errors.fullName[0]);
-                                // $('#errorIcon').html(errorMessage).css({
-                                //     'color': 'blue',
-                                //     'font-weight': 'bold',
-                                //     'diplay': 'block'
-                                // });
-
-
-
-                            }
-                            if (errors.email) {
-                                $('#RepMsg2').fadeIn();
-
-                                $('#RepMsg2').html(
-                                    '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
-                                    errors.email[0]
-                                );
-
-                                // $('#RepMsg').text(errors.email[0]);
-                            }
-                            if (errors.password) {
-                                $('#RepMsg2').html(
-                                    '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
-                                    errors.password[0]
-                                );
-
-                                // $('#RepMsg').text(errors.password[0]);
-                            }
+                            $('#RepMsg2').html(
+                                '<i class="fa-solid fa-times" style="color:red; font-size:15px;"></i> <span style="font-size:17px; color:red;">One or more fields are empty.</span>'
+                            );
                         } else {
-                            // Handle other errors here
+                            // Handle the error from the server
+                            $('#RepMsg2').html(
+                                '<i class="fa-solid fa-times" style="color:red; font-size:15px;"></i> <span style="font-size:17px; color:red;">Failed to update profile</span>'
+                            );
                         }
+                        setTimeout(function() {
+                            $('#RepMsg2').fadeOut('slow');
+                        }, 4000);
                     }
                 });
             });
