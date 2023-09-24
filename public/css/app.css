@@ -782,7 +782,7 @@ table {
     align-items: center;
 }
 .profileMain {
-    background-color: #303030;
+    background-color: #191d22;
     width: 75%;
     height: 90%;
     border-radius: 20px;
@@ -896,6 +896,10 @@ table {
     background-color: rgb(133, 133, 133);
     cursor: not-allowed;
     color: rgb(61, 61, 61);
+}
+.disabledUpdate:hover {
+    transform: none !important;
+    border: solid 1px white !important;
 }
 
 .securityFormDiv {
@@ -1372,7 +1376,9 @@ MEDIA QUERIES
         border-radius: 0px;
     }
     .profileOptions {
-        padding: 40px 0px 0px 80px;
+        flex-direction: row;
+        border-bottom: solid 0.001rem #555458;
+        padding: 25px 0px 25px 50px;
     }
     .actionsDiv {
         flex-direction: column;

@@ -50,6 +50,9 @@ Route::get('/users/google/callback', [UserController::class, 'googleHandle']);
 
 Route::post('/user/update/profile', [UserController::class, 'userProfileUpdate']);
 
+Route::post('/user/updatepassword/profile', [UserController::class, 'userPasswordUpdate']);
+
+
 //userProfile routes
 Route::get('/user/profile', [UserController::class, 'userProfile'])->middleware('auth');
 

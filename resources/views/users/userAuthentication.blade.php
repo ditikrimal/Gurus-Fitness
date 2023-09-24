@@ -8,7 +8,7 @@
 
                 <div class="inner-box">
                     <div class="forms-wrap">
-                        <form id="myForm1" action="/users/login" method="POST" autocomplete="off" class="sign-in-form">
+                        <form action="/users/login" autocomplete="off" class="sign-in-form" id="myForm1" method="POST">
                             @csrf
 
                             <div class="logo">
@@ -24,37 +24,38 @@
                             @endif
                             <div class="actual-form">
                                 <div class="input-wrap">
-                                    <input type="email" class="input-field" autocomplete="off" name="email"
+                                    <input autocomplete="off" class="input-field" name="email" type="email"
                                         value="{{ old('email') }}">
 
                                     <label>Email</label>
                                 </div>
                                 <div class="input-wrap">
-                                    <input type="password" class="input-field" autocomplete="off" name="password" />
+                                    <input autocomplete="off" class="input-field" name="password" type="password" />
 
                                     <label>Password</label>
                                 </div>
                                 <p class="text">
                                     <a href="#"> Forgot Password ?</a>
                                 </p>
-                                <button class="loginButton" id="loginButton" type="submit" name="loginButton">Log
+                                <button class="loginButton" id="loginButton" name="loginButton" type="submit">Log
                                     In</button>
                                 <h6>Don't Have an Account ?</h6>
-                                <a href="#" class="toggle">Sign up Here</a>
+                                <a class="toggle" href="#">Sign up Here</a>
                                 <div class="social">
                                     <span>OR</span>
                                     <br>
                                     <div class="socialLinks">
                                         <i class="fab fa-google" style="width:100%;"><a
-                                                style="text-decoration: none; color: black;margin-left:10px; "
-                                                href="{{ URL::to('googleLogin') }}">Continue with Google</a></i>
+                                                href="{{ URL::to('googleLogin') }}"
+                                                style="text-decoration: none; color: black;margin-left:10px; ">Continue
+                                                with Google</a></i>
 
                                     </div>
                                 </div>
                             </div>
                         </form>
 
-                        <form id="myForm" autocomplete="off" class="sign-up-form">
+                        <form autocomplete="off" class="sign-up-form" id="myForm">
                             @csrf
 
                             <div class="logo">
@@ -69,47 +70,47 @@
                             <p id="validationSpan"></p>
                             <div class="actual-form">
                                 <div class="input-wrap">
-                                    <input type="text" id="fullName" class="input-field" autocomplete="off"
-                                        name="fullName" />
+                                    <input autocomplete="off" class="input-field" id="fullName" name="fullName"
+                                        type="text" />
                                     <label>Name</label>
 
                                 </div>
 
                                 <div class="input-wrap">
-                                    <input type="email" class="input-field" autocomplete="off" name="email" />
+                                    <input autocomplete="off" class="input-field" name="email" type="email" />
 
                                     <label>Email</label>
 
                                 </div>
 
                                 <div class="input-wrap">
-                                    <input type="password" class="input-field" autocomplete="off"name="password"
-                                        id="id_password" minlength="8" />
+                                    <input autocomplete="off" class="input-field" id="id_password" minlength="8"
+                                        name="password" type="password" />
 
                                     <label>Password</label>
 
                                 </div>
 
                                 <div class="input-wrap">
-                                    <input type="password" class="input-field"
-                                        autocomplete="off"name="password_confirmation" id="id_conPassword"
-                                        minlength="8" />
+                                    <input autocomplete="off" class="input-field" id="id_conPassword" minlength="8"
+                                        name="password_confirmation" type="password" />
 
                                     <label>Confirm Password</label>
 
                                 </div>
 
-                                <button name="submitBtn" type="submit" class="loginButton" id="regBtn">Sign Up
+                                <button class="loginButton" id="regBtn" name="submitBtn" type="submit">Sign Up
                                 </button>
                                 <h6>Already have an Account ?</h6>
-                                <a href="#" class="toggle">Sign In Here</a>
+                                <a class="toggle" href="#">Sign In Here</a>
                                 <div class="social">
                                     <span>OR</span>
                                     <br>
                                     <div class="socialLinks">
                                         <i class="fab fa-google" style="width:100%;"><a
-                                                style="text-decoration: none; color: black;margin-left:10px; "
-                                                href="{{ URL::to('googleLogin') }}">Continue with Google</a></i>
+                                                href="{{ URL::to('googleLogin') }}"
+                                                style="text-decoration: none; color: black;margin-left:10px; ">Continue
+                                                with Google</a></i>
 
                                     </div>
                                 </div>
@@ -196,12 +197,12 @@
                 });
             });
         </script>
-        <section id="otpVerify" class="otpSEC">
+        <section class="otpSEC" id="otpVerify">
             <div class="OTPbox">
                 <meta charset="UTF-8" />
-                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <form id="otpForm" class="OTPForm">
+                <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+                <form class="OTPForm" id="otpForm">
                     @csrf
                     @method('post')
                     <div class="OTPheading">United <span>Limited</span></div>
@@ -214,18 +215,18 @@
                     <p id='RepMsg3'>
                     </p>
 
-                    <input name="otp" type="number" placeholder="OTP" maxlength="6" minlenght="6">
+                    <input maxlength="6" minlenght="6" name="otp" placeholder="OTP" type="number">
                     <div class="Btns">
-                        <button type="submit" class="verifyBtn" id="verifyBtn">Verify</button>
+                        <button class="verifyBtn" id="verifyBtn" type="submit">Verify</button>
                     </div>
                     <div class="Btns">
 
-                        <button onclick="otpTimer()"; class="resendBtn" id="resendBtn" value="resendOTP">Resend
+                        <button class="resendBtn" id="resendBtn" onclick="otpTimer()"; value="resendOTP">Resend
                             OTP</button>
 
                     </div>
-                    <p id="otpTimer" style="font-weight:400"> Resend OTP in <span
-                            style="color:red;font-weight:700 !important;" id="countdowntimer">60 </span> Seconds</p>
+                    <p id="otpTimer" style="font-weight:400"> Resend OTP in <span id="countdowntimer"
+                            style="color:red;font-weight:700 !important;">60 </span> Seconds</p>
                 </form>
             </div>
         </section>
@@ -274,7 +275,7 @@
                 });
             });
         </script>
-        <section id="doneSEC" class="doneSEC">
+        <section class="doneSEC" id="doneSEC">
             <div class="doneBox">
                 <h1>Congratulations </h1>
                 <span>Your account has been created!</span>

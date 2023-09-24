@@ -1,4 +1,5 @@
 <x-layout>
+
     <section class="profileSection">
         <div class="profileMain">
             <div class="profileHeading">
@@ -26,7 +27,8 @@
                                 <div><span>Full Name</span><input name="fullName" placeholder='Missing' type="text"
                                         value="{{ $user->fullName }}"></div>
                                 <div><span>Email</span><input disabled name="email" placeholder='Missing'
-                                        type="text" value="{{ $user->email }}"></div>
+                                        style="border: solid 0.001rem red" type="text" value="{{ $user->email }}">
+                                </div>
                                 <div><span>Phone</span><input name="phone" placeholder='Missing' type="text"
                                         value="{{ $user->phone }}"></div>
                                 <div><span>Address</span><input name="address" placeholder='Missing' type="text"
@@ -38,27 +40,71 @@
 
                             </div>
                             <div class="profileFormBtns">
-                                <input type="submit" value="UPDATE">
 
+                                <input type="submit" value="UPDATE">
                             </div>
                         </form>
                     </div>
+
                     <div class="securityFormDiv" id="userSecurityForm">
-                        <form action="" class="profileForm">
+                        <form class="profileForm" id="passwordForm">
+
+                            @csrf
+                            @method('post')
                             <div class="formContents">
-                                <div><span>Email</span><input disabled type="text" value="{{ $user->email }}"></div>
-                                <div><span>Current Password</span><input type="text"></div>
-                                <div><span>New Password</span><input type="text"></div>
-                                <div><span>Confirm New Password</span><input type="text"></div>
+                                <div><span>Email</span><input disabled style="border: solid 0.001rem red" type="text"
+                                        value="{{ $user->email }}"></div>
+                                <div><span>Current Password</span><input name="current_password" type="password"></div>
+                                <div><span>New Password</span><input name="password" type="password"></div>
+                                <div><span>Confirm New Password</span><input name="password_confirmation"
+                                        type="password"></div>
 
 
                             </div>
-                            <div class="profileFormBtns">
-                                <input type="button" value="UPDATE">
-                                <input type="button" value="CANCEL">
 
-                            </div>
+                            @if (Auth::check())
+                                @php
+                                    $email = Auth::user()->email;
+                                    $user = \App\Models\User::where('email', $email)->first();
+                                    $account_type = $user->account_type;
+                                @endphp
+                                <div class="profileFormBtns">
+
+                                    <input type="submit" value="UPDATE">
+
+
+                                </div>
                         </form>
+
+
+                        @if ($account_type == 'googleSignup')
+                            <style>
+                                #userSecurityForm input[type='submit'] {
+                                    background-color: rgb(133, 133, 133);
+                                    cursor: not-allowed;
+                                    color: rgb(61, 61, 61);
+                                    pointer-events: none;
+                                    border: solid 0.001rem red;
+
+                                }
+
+                                #userSecurityForm input[type='password'] {
+                                    background-color: rgb(133, 133, 133);
+                                    cursor: not-allowed;
+                                    color: rgb(61, 61, 61);
+                                    pointer-events: none;
+                                    border: solid 0.001rem red;
+
+                                }
+                            </style>
+                            <h1 style="text-align:center;margin-top:20px;font-weight:500;font-size:14px;color:red;"
+                                style="float: right">
+                                <i class="fa-solid fa-triangle-exclamation"></i> You are logged in through google.
+                                <br>
+                                <span style="font-size:11px; color:white;">You can't change your password.</span>
+                            </h1>
+                        @endif
+                        @endif
                     </div>
                 </div>
 
@@ -81,29 +127,81 @@
                     },
                     success: function(response) {
 
-                        $('#RepMsg2').html(
+                        $('#RepMsg2').fadeIn('fast').html(
                             '<i class="fa-solid fa-check" style="color:lime; font-size:15px;"></i> <span style="font-size:17px; color:lime;">Profile updated successfully</span>'
                         );
 
                         setTimeout(function() {
-                            $('#RepMsg2').fadeOut('slow');
-                        }, 4000);
+                            $('#RepMsg2').fadeOut('fast');
+                        }, 2000);
                     },
                     error: function(response) {
                         if (response.status == 404) {
 
-                            $('#RepMsg2').html(
+                            $('#RepMsg2').fadeIn('fast').html(
                                 '<i class="fa-solid fa-times" style="color:red; font-size:15px;"></i> <span style="font-size:17px; color:red;">One or more fields are empty.</span>'
                             );
                         } else {
-                            // Handle the error from the server
-                            $('#RepMsg2').html(
+                            $('#RepMsg2').fadeIn('fast').html(
                                 '<i class="fa-solid fa-times" style="color:red; font-size:15px;"></i> <span style="font-size:17px; color:red;">Failed to update profile</span>'
                             );
                         }
                         setTimeout(function() {
-                            $('#RepMsg2').fadeOut('slow');
-                        }, 4000);
+                            $('#RepMsg2').fadeOut('fast');
+                        }, 2000);
+                    }
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#passwordForm').submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize(); // Get the form data
+                $.ajax({
+                    url: '/user/updatepassword/profile',
+                    type: 'POST',
+                    data: formData,
+                    beforeSend: function() {
+                        // You can add loading or processing indicators here if needed.
+                    },
+                    success: function(response) {
+                        // Check if the response contains a 'message' key (successful response)
+                        if (response.message) {
+                            $('#RepMsg2').html(
+                                '<i class="fa-solid fa-check" style="color:lime; font-size:15px;"></i> <span style="font-size:17px; color:lime;">' +
+                                response.message + '</span>'
+                            );
+                        }
+                        setTimeout(function() {
+                            $('#RepMsg2').fadeOut('fast');
+                        }, 2000);
+                    },
+                    error: function(response) {
+                        // Check if the response contains an 'error' key (error response)
+                        if (response.responseJSON.errors) {
+                            $('#RepMsg2').fadeIn('fast').html(
+                                '<i class="fa-solid fa-times" style="color:red; font-size:15px;"></i> <span style="font-size:17px; color:red;">' +
+                                response.responseJSON.errors[Object.keys(response
+                                    .responseJSON.errors)[0]] +
+                                '</span>'
+                            );
+                        } else if (response.responseJSON) {
+                            $('#RepMsg2').fadeIn('fast').html(
+                                '<i class="fa-solid fa-times" style="color:red; font-size:15px;"></i> <span style="font-size:17px; color:red;">' +
+                                response.responseJSON.error + '</span>'
+                            );
+
+                        } else {
+                            // Handle other error cases here
+                            $('#RepMsg2').fadeIn('fast').html(
+                                '<i class="fa-solid fa-times" style="color:red; font-size:15px;"></i> <span style="font-size:17px; color:red;">Failed to change password</span>'
+                            );
+                        }
+                        setTimeout(function() {
+                            $('#RepMsg2').fadeOut('fast');
+                        }, 2000);
                     }
                 });
             });
