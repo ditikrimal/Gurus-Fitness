@@ -33,12 +33,14 @@ const navBtn = document.getElementById("navBtn");
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
 const btn3 = document.getElementById("btn3");
-
+const mobileNav = document.getElementById("mobileNav");
 const toggleNavbar = () => {
     btn1.classList.toggle("active");
     btn2.classList.toggle("active");
     btn3.classList.toggle("active");
     bgImg.classList.toggle("bgimg-navActive");
+    mobileNav.classList.toggle("active");
+    
 };
 
 navBtn.addEventListener("click", () => toggleNavbar());

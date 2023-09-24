@@ -131,6 +131,7 @@
             @endauth
         </ul>
     </nav>
+
     <div class="navBtn" id="navBtn">
         <span id="btn1"></span>
         <span id="btn3"></span>
@@ -138,6 +139,104 @@
     </div>
 
 </header>
+
+<div class="mobile-nav" id="mobileNav">
+    <div>
+        <ul class="mobile-navbar">
+
+            <li> <a href="/">
+                    Home
+                </a>
+            </li>
+            @auth
+                <li>
+                    <a href="/listings">
+
+                        News and events
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/login">
+
+
+                        Photo gallery
+                    </a>
+                </li>
+                <li>
+                    <a href="/reservations">
+
+                        reservations
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/signup">
+
+                        about us
+                    </a>
+                </li>
+                <li>
+                    <a href="/user/profile">
+
+
+                        profile
+                    </a>
+                </li>
+                <li>
+
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button class="logoutBtn" style="background-color: transparent; border:none;" type="submit">
+                            <a> Logout</a>
+
+                        </button>
+
+                    </form>
+
+                </li>
+            @else
+                <li>
+                    <a href="/listings">
+
+
+                        News and events
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/login">
+
+
+                        Photo gallery
+                    </a>
+                </li>
+                <li>
+                    <a href="/reservations">
+
+                        reservations
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/user">
+
+
+                        Login / Signup
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/signup">
+
+
+                        about us
+                    </a>
+                </li>
+            @endauth
+        </ul>
+    </div>
+</div>
 
 <body>
     . <!--<script type="text/javascript" src="https://freehitcounters.org/count/bmth"></script><br>
@@ -159,8 +258,10 @@
         <div class="foot-1">
             <h1>United Limited</h1>
             <div class="footDescription">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus dolorum non ipsa dolorem molestias,
-                nemo qui ipsum ad recusandae ipsam eligendi architecto maxime delectus. Non cupiditate quia sed adipisci
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus dolorum non ipsa dolorem
+                molestias,
+                nemo qui ipsum ad recusandae ipsam eligendi architecto maxime delectus. Non cupiditate quia sed
+                adipisci
                 quod.
             </div>
             <div class="socials">
@@ -194,7 +295,8 @@
         </div>
     </div>
     <hr>
-    <h1 style="font-size: 15px; font-weight:500;text-align:center;margin-top:17px;">Copyright © United Limited 2023. All
+    <h1 style="font-size: 15px; font-weight:500;text-align:center;margin-top:17px;">Copyright © United Limited 2023.
+        All
         rights reserved.</h1>
 </footer>
 <script src="{{ asset('//unpkg.com/alpinejs') }}" src="" defer></script>

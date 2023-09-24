@@ -115,7 +115,11 @@
 
     <script type=text/javascript>
         $(document).ready(function() {
+            var timer; // Declare a variable to store the timer ID
+
             $('#infoForm').submit(function(event) {
+                clearTimeout(timer);
+
                 event.preventDefault();
                 var formData = $(this).serialize(); // Get the form data
                 $.ajax({
@@ -127,36 +131,36 @@
                     },
                     success: function(response) {
 
-                        $('#RepMsg2').fadeIn('fast').html(
+                        $('#RepMsg2').fadeIn().html(
                             '<i class="fa-solid fa-check" style="color:lime; font-size:15px;"></i> <span style="font-size:17px; color:lime;">Profile updated successfully</span>'
                         );
 
-                        setTimeout(function() {
-                            $('#RepMsg2').fadeOut('fast');
-                        }, 2000);
+                        timer = setTimeout(function() {
+                            $('#RepMsg2').fadeOut();
+                        }, 3000);
                     },
                     error: function(response) {
                         if (response.status == 404) {
 
-                            $('#RepMsg2').fadeIn('fast').html(
+                            $('#RepMsg2').fadeIn().html(
                                 '<i class="fa-solid fa-times" style="color:red; font-size:15px;"></i> <span style="font-size:17px; color:red;">One or more fields are empty.</span>'
                             );
                         } else {
-                            $('#RepMsg2').fadeIn('fast').html(
+                            $('#RepMsg2').fadeIn().html(
                                 '<i class="fa-solid fa-times" style="color:red; font-size:15px;"></i> <span style="font-size:17px; color:red;">Failed to update profile</span>'
                             );
                         }
                         setTimeout(function() {
-                            $('#RepMsg2').fadeOut('fast');
-                        }, 2000);
+                            $('#RepMsg2').fadeOut();
+                        }, 3000);
                     }
                 });
             });
         });
-    </script>
-    <script type="text/javascript">
+
         $(document).ready(function() {
             $('#passwordForm').submit(function(event) {
+                clearTimeout(timer);
                 event.preventDefault();
                 var formData = $(this).serialize(); // Get the form data
                 $.ajax({
@@ -175,33 +179,33 @@
                             );
                         }
                         setTimeout(function() {
-                            $('#RepMsg2').fadeOut('fast');
-                        }, 2000);
+                            $('#RepMsg2').fadeOut();
+                        }, 3000);
                     },
                     error: function(response) {
                         // Check if the response contains an 'error' key (error response)
                         if (response.responseJSON.errors) {
-                            $('#RepMsg2').fadeIn('fast').html(
+                            $('#RepMsg2').fadeIn().html(
                                 '<i class="fa-solid fa-times" style="color:red; font-size:15px;"></i> <span style="font-size:17px; color:red;">' +
                                 response.responseJSON.errors[Object.keys(response
                                     .responseJSON.errors)[0]] +
                                 '</span>'
                             );
                         } else if (response.responseJSON) {
-                            $('#RepMsg2').fadeIn('fast').html(
+                            $('#RepMsg2').fadeIn().html(
                                 '<i class="fa-solid fa-times" style="color:red; font-size:15px;"></i> <span style="font-size:17px; color:red;">' +
                                 response.responseJSON.error + '</span>'
                             );
 
                         } else {
                             // Handle other error cases here
-                            $('#RepMsg2').fadeIn('fast').html(
+                            $('#RepMsg2').fadeIn().html(
                                 '<i class="fa-solid fa-times" style="color:red; font-size:15px;"></i> <span style="font-size:17px; color:red;">Failed to change password</span>'
                             );
                         }
                         setTimeout(function() {
-                            $('#RepMsg2').fadeOut('fast');
-                        }, 2000);
+                            $('#RepMsg2').fadeOut();
+                        }, 3000);
                     }
                 });
             });

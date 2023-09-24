@@ -15,7 +15,7 @@
             <ul data-slides>
                 @foreach ($carousel as $carousel)
                     <li class="slide" data-active>
-                        <img src="{{ $carousel->imageSource }}" alt="">
+                        <img alt="" src="{{ $carousel->imageSource }}">
                     </li>
                 @endforeach
             </ul>
@@ -23,9 +23,9 @@
         </div>
         <div class="imageSelector">
             <ol>
-                <li> <input type="radio" id="radio1" checked><span></span></li>
-                <li> <input type="radio" id="radio2"><span></span></li>
-                <li> <input type="radio" id="radio3"><span></span></li>
+                <li> <input checked id="radio1" type="radio"><span></span></li>
+                <li> <input id="radio2" type="radio"><span></span></li>
+                <li> <input id="radio3" type="radio"><span></span></li>
             </ol>
         </div>
     </section>
