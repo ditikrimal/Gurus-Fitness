@@ -6,14 +6,13 @@ use App\Models\carousel;
 use App\Models\listing;
 use App\Models\Main;
 use Illuminate\Http\Request;
+use App\Models\AboutData;
 
 class MainController extends Controller
 {
     public function index()
     {
-        return view('index', [
-            'carousel' => carousel::all(),
-        ]);
+        return view('index');
     }
     public function testSite()
     {
@@ -21,11 +20,13 @@ class MainController extends Controller
     }
     public function showListings()
     {
-        return view('listings.listings', [
-            'listings' => Main::latest()
-                ->filter(request(['tag', 'search']))
-                ->paginate(6),
-        ]);
+        return view('navlinks.listings.listings', 
+        // [
+        //     'listings' => Main::latest()
+        //         ->filter(request(['tag', 'search']))
+        //         ->paginate(6),
+        // ]
+    );
     }
     public function show(Main $listing)
     {
@@ -88,5 +89,12 @@ class MainController extends Controller
     {
         $listing->delete();
         return redirect('/listings/manage')->with('createMessage', 'Listing deleted Succesfully!');
+    }
+    public function aboutUs()
+    {
+        
+        return view('navlinks.about-us', [
+            'aboutData' => AboutData::latest()->get()
+        ]);
     }
 }

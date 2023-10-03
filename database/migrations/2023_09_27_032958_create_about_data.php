@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carousels', function (Blueprint $table) {
+        Schema::create('about_data', function (Blueprint $table) {
             $table->id();
-            $table->text('imageSource');
+            $table->timestamps();
+            $table->string('about_title');
+            $table->string('about_description');
+            $table->string('about_image');
         });
     }
 
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('carousel');
+        Schema::dropIfExists('about_data');
     }
 };

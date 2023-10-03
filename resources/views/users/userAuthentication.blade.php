@@ -2,13 +2,24 @@
     <section class="userSection">
         <main class="loginMain">
 
-            <div class="content" style="margin-top: 100px; width:70%">
-            </div>
-            <div class="box">
+            <section class="user-content">
 
+                <div class="user-content-image">
+
+                    <img alt="" src="./images/registerPageBackground.jpg">
+                    <div class="user-content-box">
+                        <h1>Register Now</h1>
+                        <h2>and</h2>
+                        <h3>Unlock your dream house</h3>
+                        <h4>with the <span>tip</span> of your finger</h4>
+                    </div>
+                </div>
+            </section>
+            <div class="box">
                 <div class="inner-box">
                     <div class="forms-wrap">
-                        <form action="/users/login" autocomplete="off" class="sign-in-form" id="myForm1" method="POST">
+                        <form action="/users/login" autocomplete="off" class="sign-in-form" id="myForm1"
+                            method="POST">
                             @csrf
 
                             <div class="logo">
@@ -27,12 +38,12 @@
                                     <input autocomplete="off" class="input-field" name="email" type="email"
                                         value="{{ old('email') }}">
 
-                                    <label>Email</label>
+                                    <label><i class="fa-solid fa-envelope fa-xs"></i> Email</label>
                                 </div>
                                 <div class="input-wrap">
                                     <input autocomplete="off" class="input-field" name="password" type="password" />
 
-                                    <label>Password</label>
+                                    <label><i class="fa-solid fa-lock fa-xs"></i> Password</label>
                                 </div>
                                 <p class="text">
                                     <a href="#"> Forgot Password ?</a>
@@ -72,14 +83,14 @@
                                 <div class="input-wrap">
                                     <input autocomplete="off" class="input-field" id="fullName" name="fullName"
                                         type="text" />
-                                    <label>Name</label>
+                                    <label> <i class="fa-solid fa-user fa-xs"></i> Name</label>
 
                                 </div>
 
                                 <div class="input-wrap">
                                     <input autocomplete="off" class="input-field" name="email" type="email" />
 
-                                    <label>Email</label>
+                                    <label><i class="fa-solid fa-envelope fa-xs"></i> Email</label>
 
                                 </div>
 
@@ -87,7 +98,7 @@
                                     <input autocomplete="off" class="input-field" id="id_password" minlength="8"
                                         name="password" type="password" />
 
-                                    <label>Password</label>
+                                    <label><i class="fa-solid fa-lock fa-xs"></i> Password</label>
 
                                 </div>
 
@@ -95,7 +106,7 @@
                                     <input autocomplete="off" class="input-field" id="id_conPassword" minlength="8"
                                         name="password_confirmation" type="password" />
 
-                                    <label>Confirm Password</label>
+                                    <label><i class="fa-solid fa-lock fa-xs"></i> Confirm Password</label>
 
                                 </div>
 

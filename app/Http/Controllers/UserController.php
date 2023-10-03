@@ -57,12 +57,13 @@ class UserController extends Controller
         );
         $inputData['account_type'] = 'directSignup';
         $inputData['password'] = bcrypt($inputData['password']);
-        $input_user_info = [$inputData['fullName'], $inputData['email']];
         $otp = rand(10000, 99999);
         $inputData['otp'] = $otp;
-        $user = User::create($input_user_info);
-        $user_info = UserInfo::create($inputData);
-        $this->sendOTPEmail($inputData['fullName'], $inputData['email'], $otp);
+        $user = User::create($inputData);
+        $user_info = UserInfo::create([
+            'fullName' => $inputData['fullName'],
+            'email' => $inputData['email'],
+        ]);        $this->sendOTPEmail($inputData['fullName'], $inputData['email'], $otp);
     }
     public function logout(Request $request)
     {
@@ -131,7 +132,7 @@ class UserController extends Controller
                 $findUser = new User();
                 $findUser->fullName = $user->name;
                 $findUser->email = $user->email;
-                $findUser->otp = '00000';
+                $findUser->otp = intval('XXXXXX');
                 $findUser->password = $findUser->fullName . rand(100000, 999999);
                 $findUser->is_verified = 1;
                 $findUser->email_verified_at = \Carbon\Carbon::now();

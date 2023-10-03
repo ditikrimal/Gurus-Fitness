@@ -48,6 +48,8 @@ Route::get('/googleLogin', [UserController::class, 'googleLogin']);
 
 Route::get('/users/google/callback', [UserController::class, 'googleHandle']);
 
+//update user profile
+
 Route::post('/user/update/profile', [UserController::class, 'userProfileUpdate']);
 
 Route::post('/user/updatepassword/profile', [UserController::class, 'userPasswordUpdate']);
@@ -56,8 +58,8 @@ Route::post('/user/updatepassword/profile', [UserController::class, 'userPasswor
 //userProfile routes
 Route::get('/user/profile', [UserController::class, 'userProfile'])->middleware('auth');
 
-//update user profile
-
+// about us page
+Route::get('/about-us', [MainController::class, 'aboutUs']);
 //Below code will be used while making reservations in the website
 
 //create listing by user

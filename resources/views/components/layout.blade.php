@@ -39,21 +39,21 @@
                     Home
             </a>
             </li>
-            @auth
-                <li>
+            @auth <li>
                     <a href="/listings">
+                        <i class="fa-solid fa-list"></i>
+                        Our Listings
+                    </a>
+                </li>
+
+                <li>
+                    <a>
                         <i class="fa-regular fa-newspaper"></i>
                         News and events
                     </a>
                 </li>
 
-                <li>
-                    <a href="/login">
-                        <i class="fa-regular fa-image"></i>
 
-                        Photo gallery
-                    </a>
-                </li>
                 <li>
                     <a href="/reservations">
                         <i class="fa-solid fa-calendar"></i>
@@ -62,7 +62,7 @@
                 </li>
 
                 <li>
-                    <a href="/signup">
+                    <a href="/about-us">
                         <i class="fa-solid fa-circle-exclamation"></i>
                         about us
                     </a>
@@ -93,19 +93,20 @@
             @else
                 <li>
                     <a href="/listings">
-
                         <i class="fa-solid fa-list"></i>
-                        News and events
+                        Our Listings
                     </a>
                 </li>
 
                 <li>
-                    <a href="/login">
-                        <i class="fa-solid fa-user"></i>
+                    <a href="/listings">
+                        <i class="fa-regular fa-newspaper"></i>
 
-                        Photo gallery
+                        News and events
                     </a>
                 </li>
+
+
                 <li>
                     <a href="/reservations">
                         <i class="fa-solid fa-calendar"></i>
@@ -122,7 +123,7 @@
                 </li>
 
                 <li>
-                    <a href="/signup">
+                    <a href="/about-us">
                         <i class="fa-solid fa-user-plus"></i>
 
                         about us
@@ -148,7 +149,13 @@
                     Home
                 </a>
             </li>
-            @auth
+            @auth <li>
+                    <a href="/login">
+
+
+                        Our Listings
+                    </a>
+                </li>
                 <li>
                     <a href="/listings">
 
@@ -156,13 +163,7 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="/login">
 
-
-                        Photo gallery
-                    </a>
-                </li>
                 <li>
                     <a href="/reservations">
 
@@ -171,7 +172,7 @@
                 </li>
 
                 <li>
-                    <a href="/signup">
+                    <a href="/about-us">
 
                         about us
                     </a>
@@ -197,6 +198,13 @@
                 </li>
             @else
                 <li>
+                    <a href="/login">
+
+
+                        Our Listings
+                    </a>
+                </li>
+                <li>
                     <a href="/listings">
 
 
@@ -204,13 +212,7 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="/login">
 
-
-                        Photo gallery
-                    </a>
-                </li>
                 <li>
                     <a href="/reservations">
 
@@ -227,7 +229,7 @@
                 </li>
 
                 <li>
-                    <a href="/signup">
+                    <a href="/about-us">
 
 
                         about us

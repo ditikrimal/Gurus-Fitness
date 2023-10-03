@@ -1,11 +1,10 @@
+
+
+//login and signup form scripting
 const inputs = document.querySelectorAll(".input-field");
 const toggle_btn = document.querySelectorAll(".toggle");
 const main = document.querySelector("main");
 const toggle_btn_out = document.querySelectorAll(".outToggle");
-const bullets = document.querySelectorAll(".bullets span");
-const images = document.querySelectorAll(".image");
-const bgImg = document.getElementById("bgimg");
-
 inputs.forEach((inp) => {
     inp.addEventListener("focus", () => {
         inp.classList.add("active");
@@ -21,14 +20,17 @@ toggle_btn.forEach((btn) => {
         main.classList.toggle("sign-up-mode");
     });
 });
-
 toggle_btn_out.forEach((btn) => {
     btn.addEventListener("click", () => {
         window.location = "index.php";
         main.classList.toggle("sign-up-mode");
     });
 });
+//login and signup form scripting end
 
+
+// navigation bar scripting
+const bgImg = document.getElementById("bgimg");
 const navBtn = document.getElementById("navBtn");
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
@@ -40,57 +42,11 @@ const toggleNavbar = () => {
     btn3.classList.toggle("active");
     bgImg.classList.toggle("bgimg-navActive");
     mobileNav.classList.toggle("active");
-    
 };
-
 navBtn.addEventListener("click", () => toggleNavbar());
+//navigation bar scripting end
 
-const buttons = document.querySelectorAll("[data-carousel-button]");
-const radio1 = document.getElementById("radio1");
-const radio2 = document.getElementById("radio2");
-const radio3 = document.getElementById("radio3");
-
-buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-        const offset = button.dataset.carouselButton === "next" ? 1 : -1;
-        const slides = button
-            .closest("[data-carousel]")
-            .querySelector("[data-slides]");
-
-        const activeSlide = slides.querySelector("[data-active]");
-        let newIndex = [...slides.children].indexOf(activeSlide) + offset;
-        if (newIndex < 0) newIndex = slides.children.length - 1;
-
-        if (newIndex >= slides.children.length) newIndex = 0;
-
-        slides.children[newIndex].dataset.active = true;
-        delete activeSlide.dataset.active;
-
-        // Add this switch case to set the radio button
-        switch (newIndex) {
-            case 0:
-                radio1.checked = true;
-                radio2.checked = false;
-                radio3.checked = false;
-
-                break;
-            case 1:
-                radio2.checked = true;
-                radio1.checked = false;
-                radio3.checked = false;
-                break;
-            case 2:
-                radio3.checked = true;
-                radio2.checked = false;
-                radio1.checked = false;
-                break;
-            default:
-                console.log("Invalid index");
-                break;
-        }
-    });
-});
-
+//profile page scripting
 const infoBtn= document.getElementById("infoBtn");
 const securityBtn = document.getElementById("securityBtn");
 const userInfoForm = document.getElementById("userInfoForm");
@@ -100,7 +56,6 @@ infoBtn.addEventListener("click", () => {
     userSecurityForm.style.display = "none";
     infoBtn.style.color = "#007bff";
     securityBtn.style.color = "white";
-
 });
 securityBtn.addEventListener("click", () => {
     userSecurityForm.style.display = "block";
@@ -108,3 +63,4 @@ securityBtn.addEventListener("click", () => {
     userInfoForm.style.display = "none";
     securityBtn.style.color = "#007bff";
 });
+//profile page scripting end
