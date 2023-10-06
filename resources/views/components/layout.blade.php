@@ -252,56 +252,74 @@
 
 </body>
 
-<script src="{{ asset('script/app.js') }}"></script>
+<script src="{{ asset('script/app.js') }}">
+    < footer >
+        <
+        div class = "row" >
 
-<footer>
-    <div class="row">
+        <
+        div class = "foot-1" >
+        <
+        h1 > United Limited < /h1> <
+        div class = "footDescription" >
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit.Doloribus dolorum non ipsa dolorem
+    molestias,
+    nemo qui ipsum ad recusandae ipsam eligendi architecto maxime delectus.Non cupiditate quia sed
+    adipisci
+    quod. <
+        /div> <
+        div class = "socials" >
+        <
+        i class = "fa-brands fa-facebook" > < /i> <
+        i class = "fa-brands fa-instagram" > < /i> <
+        i class = "fa-brands fa-google" > < /i> <
+        i class = "fa-brands fa-tiktok" > < /i> <
+        /div> <
+        /div> <
+        hr >
+        <
+        div class = "foot-2" >
+        <
+        span > < i class = "fa-solid fa-phone" > < /i> +977 9845678109</span >
+        <
+        span > < i class = "fa-solid fa-location-dot" > < /i> Bharatpur, Chitwan</span >
+        <
+        span > < i class = "fa-solid fa-at" > < /i> unitedlimited@feedback.com</span >
+        <
+        /div> <
+        hr >
+        <
+        div class = "foot-3" >
 
-        <div class="foot-1">
-            <h1>United Limited</h1>
-            <div class="footDescription">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus dolorum non ipsa dolorem
-                molestias,
-                nemo qui ipsum ad recusandae ipsam eligendi architecto maxime delectus. Non cupiditate quia sed
-                adipisci
-                quod.
-            </div>
-            <div class="socials">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-google"></i>
-                <i class="fa-brands fa-tiktok"></i>
-            </div>
-        </div>
-        <hr>
-        <div class="foot-2">
-            <span><i class="fa-solid fa-phone"></i> +977 9845678109</span>
-            <span><i class="fa-solid fa-location-dot"></i> Bharatpur, Chitwan</span>
-            <span><i class="fa-solid fa-at"></i> unitedlimited@feedback.com</span>
-        </div>
-        <hr>
-        <div class="foot-3">
+        <
+        span > Our Team < /span> <
+        div class = "member" >
+        <
+        ul >
+        <
+        li >
+        Elon Musk <
+        /li> <
+        li > Larry Paige < /li> <
+        li > Mark Zuckerburg < /li> <
+        li > Bill Gates < /li>
 
-            <span>Our Team</span>
-            <div class="member">
-                <ul>
-                    <li>
-                        Elon Musk
-                    </li>
-                    <li> Larry Paige</li>
-                    <li>Mark Zuckerburg</li>
-                    <li>Bill Gates</li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <h1 style="font-size: 15px; font-weight:500;text-align:center;margin-top:17px;">Copyright © United Limited 2023.
-        All
-        rights reserved.</h1>
-</footer>
-<script src="{{ asset('//unpkg.com/alpinejs') }}" src="" defer></script>
+        <
+        /ul> <
+        /div> <
+        /div> <
+        /div> <
+        hr >
+        <
+        h1 style = "font-size: 15px; font-weight:500;text-align:center;margin-top:17px;" >
+        Copyright© United Limited 2023.
+    All
+    rights reserved. < /h1> <
+        /footer> <
+        script src = "{{ asset('//unpkg.com/alpinejs') }}"
+    src = ""
+    defer >
+</script>
 
 <x-flashMessage />
 
