@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\carousel;
 use App\Models\listing;
-use App\Models\Main;
+
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+use App\Models\carousel;
+use App\Models\Main;
 use App\Models\AboutData;
+use App\Models\News;
+use App\Models\Event;
 
 class MainController extends Controller
 {
@@ -95,6 +102,12 @@ class MainController extends Controller
         
         return view('navlinks.about-us', [
             'aboutData' => AboutData::latest()->get()
+        ]);
+    }
+    public function newsEvents()
+    {
+        return view('navlinks.newsAndEvents',[
+            'news' =>News::orderBy('created_at', 'desc')->paginate(4)
         ]);
     }
 }

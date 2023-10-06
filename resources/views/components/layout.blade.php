@@ -47,7 +47,7 @@
                 </li>
 
                 <li>
-                    <a>
+                    <a href="/news-and-events">
                         <i class="fa-regular fa-newspaper"></i>
                         News and events
                     </a>
@@ -99,7 +99,7 @@
                 </li>
 
                 <li>
-                    <a href="/listings">
+                    <a href="/news-and-events">
                         <i class="fa-regular fa-newspaper"></i>
 
                         News and events
@@ -157,7 +157,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/listings">
+                    <a href="/news-and-events">
 
                         News and events
                     </a>
@@ -205,7 +205,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/listings">
+                    <a href="/news-and-events">
 
 
                         News and events

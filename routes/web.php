@@ -60,6 +60,9 @@ Route::get('/user/profile', [UserController::class, 'userProfile'])->middleware(
 
 // about us page
 Route::get('/about-us', [MainController::class, 'aboutUs']);
+
+//news and events page
+Route::get('/news-and-events', [MainController::class, 'newsEvents']);
 //Below code will be used while making reservations in the website
 
 //create listing by user

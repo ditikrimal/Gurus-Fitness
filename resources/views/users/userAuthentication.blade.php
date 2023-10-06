@@ -1,5 +1,13 @@
 <x-layout>
+
     <section class="userSection">
+        <div class="circle-elements">
+            <div class="user-circle1"></div>
+            <div class="user-circle2"></div>
+            <div class="user-circle3"></div>
+            <div class="user-circle4"></div>
+            <div class="user-circle5"></div>
+        </div>
         <main class="loginMain">
 
             <section class="user-content">
@@ -10,6 +18,7 @@
                     <div class="user-content-box">
                         <h1>Register Now</h1>
                         <h2>and</h2>
+
                         <h3>Unlock your dream house</h3>
                         <h4>with the <span>tip</span> of your finger</h4>
                     </div>
