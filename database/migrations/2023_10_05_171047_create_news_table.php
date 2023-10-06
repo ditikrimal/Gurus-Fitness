@@ -8,6 +8,7 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * 
      */
     public function up(): void
     {
@@ -16,7 +17,10 @@ return new class extends Migration
             $table->string('news_title')->nullable();
             $table->longText('news_body')->nullable();
             $table->string('news_image')->nullable();
+            $table->bigInteger('news_views')->default(1);
             $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+
         });
     }
 

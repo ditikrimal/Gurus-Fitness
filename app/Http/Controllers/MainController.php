@@ -104,10 +104,5 @@ class MainController extends Controller
             'aboutData' => AboutData::latest()->get()
         ]);
     }
-    public function newsEvents()
-    {
-        return view('navlinks.newsAndEvents',[
-            'news' =>News::orderBy('created_at', 'desc')->paginate(4)
-        ]);
-    }
+  
 }

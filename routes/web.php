@@ -5,6 +5,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\listing;
+use App\Http\Controllers\NewsAndEventsController;
 
 //index_page
 Route::get('/', [MainController::class, 'index'])->name('index');
@@ -62,7 +63,9 @@ Route::get('/user/profile', [UserController::class, 'userProfile'])->middleware(
 Route::get('/about-us', [MainController::class, 'aboutUs']);
 
 //news and events page
-Route::get('/news-and-events', [MainController::class, 'newsEvents']);
+Route::get('/news-and-events', [NewsAndEventsController::class, 'newsEvents']);
+Route::get('/news/{news_id}/{news_title}', [NewsAndEventsController::class, 'showSingleNews']);
+
 //Below code will be used while making reservations in the website
 
 //create listing by user
