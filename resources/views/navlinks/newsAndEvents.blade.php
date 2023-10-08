@@ -35,7 +35,7 @@
                 <div class="news-bar-heading">Most viewed stories </div>
                 <ul>
                     @foreach ($most_viewed_news as $most_viewed)
-                        <li><a href="">
+                        <li><a href="/news/{{ $most_viewed->id }}/{{ $most_viewed->news_title }}">
                                 {{ $a++ }}.
                                 {{ $most_viewed->news_title }}
                             </a>
@@ -49,14 +49,35 @@
         <div class="news-bottom">
             <div class="events-box">
                 <div class="events-box-heading">Events from United Limited</div>
-                <div class="event-container">This is container</div>
-                <div class="event-container">This is container</div>
-                <div class="event-container">This is container</div>
-                <div class="event-container">This is container</div>
-                <div class="event-container">This is container</div>
+                @foreach ($events as $event)
+                    <div class="event-container">
+                        <div class="event-container-content">
+                            <div class="event-container-heading">
+                                <h1>{{ $event->events_title }}</h1>
+                            </div>
+                            <div class="event-container-main-content">{{ $event->events_body }}</div>
+                        </div>
+                        <div class="event-container-button"><a href="">Show<br>More</a></div>
+
+                    </div>
+                @endforeach
+                <div class="view-events-button">
+                    <a href="">View All</a>
+                </div>
             </div>
-            <div class="top-news">
-                <div class="top-news-heading">Important Stories from United Limited</div>
+            <div class="notice-box">
+                <div class="notice-box-heading">
+                    <h1>Important Notice from United Limited</h1>
+                </div>
+
+                <div class="notice-box-content">
+                    <div>
+                        @foreach ($notice as $notice_item)
+                            <li>{{ $notice_item->notice_title }}</li>
+                        @endforeach
+
+                    </div>
+                </div>
             </div>
 
         </div>

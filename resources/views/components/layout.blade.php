@@ -26,6 +26,8 @@
 
 <header>
 
+
+
     <div class="logoContainer">
         <a href="/">
             <h1>United <span>Limited</span></h1>
@@ -124,8 +126,7 @@
 
                 <li>
                     <a href="/about-us">
-                        <i class="fa-solid fa-user-plus"></i>
-
+                        <i class="fa-solid fa-circle-exclamation"></i>
                         about us
                     </a>
                 </li>
@@ -252,74 +253,77 @@
 
 </body>
 
-<script src="{{ asset('script/app.js') }}">
-    < footer >
-        <
-        div class = "row" >
+<footer>
+    <div class="footer-top">
+        <div class="footer-top-left">
+            <div class="get-in-touch">
+                <div class="get-in-touch-heading">
+                    <h2>Get in touch</h2>
+                </div>
+                <div class="get-in-touch-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, at sint placeat cumque
+                        quisquam quaerat impedit qui minima fugit itaque in omnis quas, laudantium eligendi unde facere
+                        architecto distinctio nostrum?</p>
+                </div>
+            </div>
+            <div class="get-in-touch-socials">
+                <div class="contact-social mail"><i
+                        class="fa-solid fa-envelope"></i><span>unitedlimited.feedback@gmail.com</span>
+                </div>
+                <div class="contact-social phone"><i class="fa-solid fa-phone"></i>
+                    <span>+977 9751423169</span>
+                </div>
+                <div class="contact-social location"><i class="fa-solid fa-location-dot"></i><span>Bharatpur-12,
+                        Chitwan</span></div>
+            </div>
+        </div>
+        <div class="footer-top-right">
+            <div class="contact-form-div">
+                <h1>Say Something</h1>
+                <form action="" class="contact-form">
+                    <div class="contact-form-inputs">
+                        <input id="" name="" placeholder="Your Name" type="text">
+                        <input id="" name="" placeholder="Your Email" type="text">
+                        <textarea cols="30" id="message" name="" placeholder="Message" rows="10"></textarea>
+                        <input id="" name="" type="submit" value="SEND">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-left">
+            <h1>United <span>Limited</span></h1>
+            <p> Your Trusted Partner in Real Estate</p>
+        </div>
+        <div class="footer-bottom-center">
+            <h2>We are also in </h2>
+            <div class="footer-socials">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-square-x-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom-right">
+            <div class="footer-bottom-right-content">
+                <h2>Legals</h2>
+                <ul>
+                    <li><a href="">Privacy Policy</a></li>
+                    <li><a href="">Terms and Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-last">
+        <hr>
 
-        <
-        div class = "foot-1" >
-        <
-        h1 > United Limited < /h1> <
-        div class = "footDescription" >
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit.Doloribus dolorum non ipsa dolorem
-    molestias,
-    nemo qui ipsum ad recusandae ipsam eligendi architecto maxime delectus.Non cupiditate quia sed
-    adipisci
-    quod. <
-        /div> <
-        div class = "socials" >
-        <
-        i class = "fa-brands fa-facebook" > < /i> <
-        i class = "fa-brands fa-instagram" > < /i> <
-        i class = "fa-brands fa-google" > < /i> <
-        i class = "fa-brands fa-tiktok" > < /i> <
-        /div> <
-        /div> <
-        hr >
-        <
-        div class = "foot-2" >
-        <
-        span > < i class = "fa-solid fa-phone" > < /i> +977 9845678109</span >
-        <
-        span > < i class = "fa-solid fa-location-dot" > < /i> Bharatpur, Chitwan</span >
-        <
-        span > < i class = "fa-solid fa-at" > < /i> unitedlimited@feedback.com</span >
-        <
-        /div> <
-        hr >
-        <
-        div class = "foot-3" >
-
-        <
-        span > Our Team < /span> <
-        div class = "member" >
-        <
-        ul >
-        <
-        li >
-        Elon Musk <
-        /li> <
-        li > Larry Paige < /li> <
-        li > Mark Zuckerburg < /li> <
-        li > Bill Gates < /li>
-
-        <
-        /ul> <
-        /div> <
-        /div> <
-        /div> <
-        hr >
-        <
-        h1 style = "font-size: 15px; font-weight:500;text-align:center;margin-top:17px;" >
-        Copyright© United Limited 2023.
-    All
-    rights reserved. < /h1> <
-        /footer> <
-        script src = "{{ asset('//unpkg.com/alpinejs') }}"
-    src = ""
-    defer >
-</script>
+        <div class="copyright-footer">&copy; Copyright United Limited 2023</div>
+        <div class="dev-description"><span>Developed by Ditik Rimal</span></div>
+    </div>
+</footer>
+<script src="{{ asset('script/app.js') }}"></script>
+<script src="{{ asset('//unpkg.com/alpinejs') }}" defer></script>
 
 <x-flashMessage />
 

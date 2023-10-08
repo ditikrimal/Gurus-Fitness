@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('fullName');
             $table->string('email')->unique();
-            $table->string('account_type')->unique();
+            $table->string('account_type');
             $table->bigInteger('otp')->nullable();
             $table->boolean('is_verified')->default(0);
             $table->timestamp('email_verified_at')->nullable();

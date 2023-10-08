@@ -1,28 +1,33 @@
 <x-layout>
-    <section class="listing">
-        <h1 style="text-align: center">{{ $news->news_title }}</h1>
-
-
-        <div class="listBox">
-            <div class="boxContent">
-                <div class="row">
-
-
+    <section class="single-news-section">
+        <div class="single-news-top">
+            <div class="single-news-heading-content">
+                <div class="news-heading">
+                    <h1>{{ $news->news_title }}</h1>
                 </div>
-                <div class="tags">
+                <div class="news-image"><img alt="" src="{{ asset('images/Image-1.jpg') }}"></div>
+            </div>
+            <div class="news-bar-vertical latest-post">
+                @php
+                    $a = 1;
+                @endphp
+                <div class="news-bar-heading ">Latest Stories</div>
+                <ul>
+                    @foreach ($latest_posts as $latest_post)
+                        <li><a href="/news/{{ $latest_post->id }}/{{ $latest_post->news_title }}">
+                                {{ $a++ }}.
+                                {{ $latest_post->news_title }}
+                            </a>
+                        </li>
+                    @endforeach
 
 
-                </div>
-
-
-                <div class="description">
-                    <p>
-                        {{ $news->news_body }}
-                    </p>
-                </div>
+                </ul>
             </div>
         </div>
-
+        <div class="single-news-bottom">
+            <div class="single-news-main-content">{{ $news->news_body }}</div>
+        </div>
 
     </section>
 </x-layout>

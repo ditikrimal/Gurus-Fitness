@@ -107,7 +107,7 @@ class UserController extends Controller
         if (auth()->attempt($inputData)) {
             $request->session()->regenerate();
             session()->flash('createMessage', 'Logged in Successfully!');
-            session()->flash('messageColor', 'lime'); // Replace with the desired background color
+            session()->flash('messageColor', '#00b300'); // Replace with the desired background color
 
             // Redirect the user to a specific route
             return redirect()->route('index'); // Replace 'your.route.name' with the actual route name
@@ -145,7 +145,7 @@ class UserController extends Controller
                 auth()->login($findUser);
                 $request->session()->regenerate();
                 session()->flash('createMessage', 'Logged in Successfully!');
-                session()->flash('messageColor', 'lime');
+                session()->flash('messageColor', '#00b300');
                 return redirect()->route('index');
             } else {
                 $signupMethod = $findUser->account_type;
@@ -153,7 +153,7 @@ class UserController extends Controller
                     auth()->login($findUser);
                     $request->session()->regenerate();
                     session()->flash('createMessage', 'Logged in Successfully!');
-                    session()->flash('messageColor', 'lime');
+                    session()->flash('messageColor', '#00b300');
                     return redirect()->route('index');
                 } elseif ($signupMethod == 'directSignup') {
                     return redirect('/user')
@@ -184,7 +184,7 @@ class UserController extends Controller
             $user->save();
             auth()->login($user);
             session()->flash('createMessage', 'User Created Successfully!');
-            session()->flash('messageColor', 'lime'); // Replace with the desired background color
+            session()->flash('messageColor', '#00b300'); // Replace with the desired background color
             return response()->json(['message' => 'User Created Successfully!'], 200);
         } else {
             return response()->json(['errors' => ['otp' => ['Invalid OTP']]], 422);
@@ -200,7 +200,7 @@ class UserController extends Controller
             $user->save();
             auth()->login($user);
             session()->flash('createMessage', 'Email Verified Successfully!');
-            session()->flash('messageColor', 'lime'); // Replace with the desired background color
+            session()->flash('messageColor', '#00b300'); // Replace with the desired background color
 
             // Redirect the user to a specific route
             return redirect()->route('index'); // Replace with the desired background color
