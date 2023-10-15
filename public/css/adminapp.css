@@ -4,6 +4,7 @@
     --light: #4899e9ee;
     --dark: #212226;
 }
+
 /* width */
 ::-webkit-scrollbar {
     width: 5px;
@@ -50,6 +51,8 @@ body {
     color: white;
     overflow-y: scroll;
 }
+/* layout styling */
+
 .admin-app {
     display: flex;
     flex-direction: row;
@@ -129,13 +132,13 @@ body {
     color: white;
 }
 .sideBarLinks {
-    cursor: pointer;
     display: flex;
     flex-direction: row;
     gap: 0.8rem;
     padding-left: 1rem;
     align-items: center;
     margin-top: 0.3rem;
+    transition: 0.7s all ease;
 }
 .sideBarLinks.title {
     font-size: 1rem;
@@ -149,13 +152,13 @@ body {
     background-color: #007bff34;
     border-radius: 0.2rem;
 }
-.sidebarLinks:hover a {
-    color: var(--primary);
+.sideBarLinks:hover:not(.title) {
+    transform: translateX(10px);
+    transition: 0.7s all ease;
+    cursor: pointer;
 }
-.sidebarLinks:hover i {
-    color: var(--primary);
-}
-.sidebarLinks.active {
+
+.sideBarLinks.active {
     color: var(--primary);
 }
 .admin-app-main {
@@ -208,7 +211,7 @@ body {
     object-fit: cover;
 }
 .admin-app-content {
-    padding: 2rem 4rem;
+    padding: 1rem 2rem 1rem 4rem;
 }
 .login {
     display: flex;
@@ -229,7 +232,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 0.6rem;
     width: 100%;
     padding: 2rem;
 }
@@ -238,6 +241,12 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     color: var(--primary);
+}
+#RepMsg1 {
+    color: rgb(255, 0, 0);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
 }
 .admin-form h1 span {
     color: var(--dark);
@@ -248,8 +257,18 @@ body {
     text-transform: uppercase;
     color: var(--dark);
 }
-.admin-form input[type="text"],
-input[type="password"] {
+.admin-form-inputs {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+.admin-form-inputs a {
+    text-decoration: underline;
+    font-size: 0.9rem;
+}
+.admin-form input {
     width: 100%;
     padding: 0.5rem 1rem;
     border: none;
@@ -280,7 +299,206 @@ input[type="password"] {
     color: black;
     transition: all 0.3s ease;
 }
+/* layout styling */
 
+/*users styling */
+.admin-users-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    height: 80vh;
+}
+.admin-users-section h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+.manage-users-buttons {
+    flex-basis: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.search-input {
+    width: 30%;
+    padding: 0.3rem 0.5rem;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    color: white;
+    background-color: transparent;
+    font-size: 1rem;
+}
+.manage-users-buttons div {
+    display: flex;
+    gap: 1rem;
+}
+.manage-users-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    background-color: white;
+    color: var(--dark);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    font-weight: 500;
+}
+.manage-users-buttons button:hover:not(.delete-all-button) {
+    background-color: #007bff8b;
+    color: white;
+    transition: all 0.3s ease;
+}
+.delete-all-button {
+    display: none;
+}
+.delete-all-button.active {
+    background-color: crimson;
+    display: block;
+}
+.users-table {
+    flex-basis: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.users-table table {
+    width: 100%;
+    border-collapse: collapse;
+    gap: 1rem;
+}
+.users-table th {
+    background-color: var(--primary);
+    color: white;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+}
+
+.users-table td {
+    color: white;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 400;
+    padding: 0.8rem 1rem;
+    border-bottom: solid #32343a 0.00001rem;
+}
+.select {
+    cursor: pointer;
+}
+.new-user-section {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    background-color: rgba(0, 0, 0, 0.429);
+    transition: all 0.2s ease;
+    visibility: hidden;
+}
+.new-user-section.active {
+    transition: 0.3s all ease;
+    visibility: visible;
+}
+
+.new-user-box {
+    padding: 4rem 3rem;
+    background-color: white;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-radius: 1rem;
+    transition: all 0.5s ease;
+    transform: translateY(-200%);
+}
+.new-user-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.new-user-box.active {
+    scale: 1;
+    transition: all 0.5s ease;
+    transform: translateY(0%);
+}
+.new-user-box h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--dark);
+    text-align: center;
+}
+.new-user-form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+.text-inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+.input-box-new-user {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.text-inputs label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--dark);
+}
+.text-inputs input {
+    width: 100%;
+    padding: 0.5rem 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    font-size: 0.9rem;
+}
+.button-inputs {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.button-inputs input {
+    width: 100%;
+    padding: 0.5rem 0;
+    background-color: var(--dark);
+    text-transform: uppercase;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 0.2rem;
+    font-size: 0.9rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+.button-inputs input[type="submit"]:hover {
+    background-color: rgb(36, 160, 36);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.button-inputs input[type="button"]:hover {
+    background-color: crimson;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+/*users styling */
+
+/* media queries */
 @media screen and (max-width: 62em) {
     .sidebar {
         transform: translateX(-100%);

@@ -4,7 +4,7 @@
     @csrf
 
     <label for="email">Email</label>
-    <input id="email" name="email" required type="email" value="{{ old('email') }}">
+    <input id="email" name="username" required value="{{ old('username') }}">
 
     <label for="password">Password</label>
     <input id="password" name="password" required type="password">

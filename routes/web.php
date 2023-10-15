@@ -12,7 +12,7 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::get('/testsite', function () {
-    return view('adminAuth.createUser');
+    return view('adminAuth.adminManage.createUser');
 });
 
 //show all listings
@@ -95,11 +95,11 @@ Route::get('/listings/{listing}', [MainController::class, 'show']);
 
 
     //admin login routes
-Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('adminlogin');
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('adminlogin')->middleware('guest');
 Route::post('/admin/login-user', [AdminController::class, 'AdminLoginUser'])->name('adminloginuser');
 // routes/web.php
 
-Route::post('/admin/create', [AdminController::class, 'createAdminUser'])->name('admin.create');
+Route::post('/admin/create', [AdminController::class, 'createAdminUser'])->name('adminCreate');
 
 Route::post('/admin/logout', [AdminController::class, 'AdminLogout'])->name('adminlogout');
 

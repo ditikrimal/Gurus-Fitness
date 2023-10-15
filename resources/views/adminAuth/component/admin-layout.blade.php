@@ -35,12 +35,12 @@
                 <ul class="sideBarUl">
                     <li class="sideBarLinks title">Home</li>
 
-                    <li class="sideBarLinks active">
+                    <li class="sideBarLinks ">
                         <a href="/admin/home/dashboard"> <i class="fa-solid fa-gauge"></i>Dashboard</a>
                     </li>
                     <li class="sideBarLinks" style="margin-top: 0.5rem">
                         <a href="/admin/home/my-profile">
-                            <i class="fa-solid fa-user-gear"></i> My Profile</a>
+                            <i class="fa-solid fa-user-gear"></i>My Profile</a>
                     </li>
 
 
@@ -76,13 +76,13 @@
                     <li class="sideBarLinks">
                         <a href="/admin/admin-manage/users"><i class="fa-solid fa-users"></i>Users</a>
                     </li>
-                    <li class="sideBarLinks">
+                    <li class="sideBarLinks" style="width:100%;">
 
                         <i class="fa-solid fa-right-to-bracket"></i>
-                        <form action="/admin/logout" method="POST">
+                        <form action="/admin/logout" method="POST" style="width:100%;">
                             @csrf
-                            <button style="background-color: transparent; border:none;" type="submit">
-                                <a style=";"> Logout</a>
+                            <button style="width:100%; background-color: transparent; border:none;" type="submit">
+                                <a style="width:100%; "> Logout</a>
 
                             </button>
 
@@ -111,7 +111,8 @@
                     </div>
                     <div class="profile-name">
 
-                        <p><span>Hi,</span> <strong>Admin</strong></p>
+                        <p><span>Hi,</span> <strong
+                                style="color: #2386f0;">{{ Auth::guard('admin')->user()->fullName }}</strong></p>
                     </div>
                 </div>
             </div>
@@ -132,29 +133,7 @@
     <script src="{{ asset('script/adminApp.js') }}"></script>
 
 </body>
-<script>
-    // Select all the li elements that are inside the ul elements with the sideBarUl class
-    var liElements = $(".sideBarUl > li");
-
-    // Add a click event handler to each li element
-    liElements.click(function() {
-        // Get the index of the clicked li element within its parent ul element
-        var index = $(this).parent().children().index(this);
-        // Store the index in localStorage with a key name "active"
-        localStorage.setItem("active", index);
-    });
-
-    // When the page loads, check if there is any value stored in localStorage with the key name "active"
-    $(document).ready(function() {
-        // Get the value from localStorage
-        var activeIndex = localStorage.getItem("active");
-        // If there is a value, add active class to the corresponding li element
-        if (activeIndex) {
-            liElements.removeClass("active");
-            liElements.eq(activeIndex).get(0).classList.add("active");
-        }
-    });
-</script>
+<script></script>
 
 
 
