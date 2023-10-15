@@ -20,7 +20,7 @@
 </head>
 
 
-<title>United Limited</title>
+<title> </title>
 <x-profile-alert-banner />
 
 
@@ -319,7 +319,8 @@
         <hr>
 
         <div class="copyright-footer">&copy; Copyright United Limited 2023</div>
-        <div class="dev-description"><span>Developed by Ditik Rimal</span></div>
+        <div class="dev-description"><span>Developed by <a href="https:/www.ditikrimal.com.np" target="_blank"> Ditik
+                    Rimal</a></span></div>
     </div>
 </footer>
 <script src="{{ asset('script/app.js') }}"></script>

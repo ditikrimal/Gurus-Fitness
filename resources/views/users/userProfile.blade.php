@@ -137,7 +137,9 @@
 
                         timer = setTimeout(function() {
                             $('#RepMsg2').fadeOut();
-                        }, 3000);
+                            location.reload(); // then reload the page.(3)
+
+                        }, 2000);
                     },
                     error: function(response) {
                         if (response.status == 404) {
@@ -178,9 +180,14 @@
                                 response.message + '</span>'
                             );
                         }
+
                         setTimeout(function() {
                             $('#RepMsg2').fadeOut();
+                            location.reload(); // then reload the page.(3)
+
                         }, 3000);
+
+
                     },
                     error: function(response) {
                         // Check if the response contains an 'error' key (error response)

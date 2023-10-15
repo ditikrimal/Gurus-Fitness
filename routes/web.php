@@ -6,12 +6,13 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\listing;
 use App\Http\Controllers\NewsAndEventsController;
+use App\Http\Controllers\AdminController;
 
 //index_page
 Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::get('/testsite', function () {
-    return view('email.verifyMail');
+    return view('adminAuth.createUser');
 });
 
 //show all listings
@@ -88,3 +89,40 @@ Route::delete('/listings/{listing}', [MainController::class, 'delete'])->middlew
 
 //show single listing
 Route::get('/listings/{listing}', [MainController::class, 'show']);
+
+
+//admin routes
+
+
+    //admin login routes
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('adminlogin');
+Route::post('/admin/login-user', [AdminController::class, 'AdminLoginUser'])->name('adminloginuser');
+// routes/web.php
+
+Route::post('/admin/create', [AdminController::class, 'createAdminUser'])->name('admin.create');
+
+Route::post('/admin/logout', [AdminController::class, 'AdminLogout'])->name('adminlogout');
+
+    //route auth groups
+    Route::group(['middleware' => 'adminauth'], function () {
+
+     Route::get('/admin/home', [AdminController::class, 'AdminDashboard']);
+
+     Route::get('/admin/home/dashboard', [AdminController::class, 'AdminDashboard']);
+
+     Route::get('/admin/home/my-profile', [AdminController::class, 'AdminProfile']);
+
+     Route::get('/admin/website-content/news-and-events', [AdminController::class, 'AdminNewsEvents']);
+
+        Route::get('admin/website-content/plans-and-prices', [AdminController::class, 'AdminPlansPrices']);
+
+      Route::get('/admin/website-content/about-us', [AdminController::class, 'AdminAboutUs']);
+
+      Route::get('/admin/customer-manage/user-accounts', [AdminController::class, 'AdminUserAccounts']);
+
+     Route::get('/admin/customer-manage/subscriptions', [AdminController::class, 'AdminSubscriptions']);
+
+     Route::get('/admin/admin-manage/users', [AdminController::class, 'AdminUsers']);
+
+    });
+

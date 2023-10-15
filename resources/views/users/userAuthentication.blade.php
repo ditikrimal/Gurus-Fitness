@@ -6,7 +6,6 @@
             <div class="user-circle2"></div>
             <div class="user-circle3"></div>
             <div class="user-circle4"></div>
-            <div class="user-circle5"></div>
         </div>
         <main class="loginMain">
 
@@ -14,13 +13,9 @@
 
                 <div class="user-content-image">
 
-                    <img alt="" src="./images/registerPageBackground.jpg">
+                    <img alt="" src="./images/Equipments.jpg">
                     <div class="user-content-box">
-                        <h1>Register Now</h1>
-                        <h2>and</h2>
 
-                        <h3>Unlock your dream house</h3>
-                        <h4>with the <span>tip</span> of your finger</h4>
                     </div>
                 </div>
             </section>

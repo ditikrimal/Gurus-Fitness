@@ -14,12 +14,17 @@ use App\Models\Main;
 use App\Models\AboutData;
 use App\Models\News;
 use App\Models\Event;
+use App\Models\PlansAndPrice;
 
 class MainController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('index',
+    [
+        'plans_prices'=>PlansAndPrice::orderBy('plan_prices', 'desc')->get(),
+    ]
+    );
     }
     public function testSite()
     {
@@ -27,7 +32,7 @@ class MainController extends Controller
     }
     public function showListings()
     {
-        return view('navlinks.listings.listings', 
+        return view('navlinks.listings.listings',
         // [
         //     'listings' => Main::latest()
         //         ->filter(request(['tag', 'search']))
@@ -99,10 +104,10 @@ class MainController extends Controller
     }
     public function aboutUs()
     {
-        
+
         return view('navlinks.about-us', [
             'aboutData' => AboutData::latest()->get()
         ]);
     }
-  
+
 }

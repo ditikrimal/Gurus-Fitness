@@ -64,4 +64,3 @@ securityBtn.addEventListener("click", () => {
     securityBtn.style.color = "#007bff";
 });
 //profile page scripting end
-
