@@ -16,9 +16,11 @@
 
                     <div id="securityBtn"><i class="fa-solid fa-lock"></i><span>Security </span></div>
 
+                    <div id="subscriptionBtn"><i class="fa-solid fa-cube"></i><span> Packages </span></div>
+
                 </div>
                 <div class="optionContent">
-                    <div class="infoFormDiv" id="userInfoForm">
+                    <div class="userDiv infoFormDiv" id="userInfoForm">
                         <form class="profileForm" id="infoForm">
                             @csrf
                             @method('post')
@@ -46,7 +48,7 @@
                         </form>
                     </div>
 
-                    <div class="securityFormDiv" id="userSecurityForm">
+                    <div class=" userDiv securityFormDiv" id="userSecurityForm">
                         <form class="profileForm" id="passwordForm">
 
                             @csrf
@@ -105,6 +107,9 @@
                             </h1>
                         @endif
                         @endif
+                    </div>
+                    <div class=" userDiv subscription-div" id="userSubscription">
+                        <h1>My Subscription</h1>
                     </div>
                 </div>
 

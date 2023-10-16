@@ -94,6 +94,7 @@
         </div>
         </div>
         <div class="admin-app-main" id="adminAppMain">
+
             <div class="admin-navbar">
                 <div class="ham-burger">
                     <svg id="hamBurgerBtn">
@@ -105,14 +106,16 @@
                         </rect>
                     </svg>
                 </div>
+
                 <div class="navbar-profile">
                     <div class="profile-img">
                         <img alt="profile-img" src="{{ asset('images/Image-1.jpg') }}">
                     </div>
                     <div class="profile-name">
 
-                        <p><span>Hi,</span> <strong
-                                style="color: #2386f0;">{{ Auth::guard('admin')->user()->fullName }}</strong></p>
+                        <p><span>Hi,</span> <strong style="color: #2386f0;">
+                                {{ Auth::guard('admin')->user()->fullName }}
+                            </strong></p>
                     </div>
                 </div>
             </div>

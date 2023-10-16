@@ -1,24 +1,36 @@
 @extends('adminAuth.component.admin-layout')
 @section('users')
+    <div class="flash-message">
+        <p class="flash-message-content " id="flash-message-content"></p>
+    </div>
     <section class="admin-users-section">
         <h1>User Management</h1>
         <div class="manage-users-buttons">
-            <input class="search-input" placeholder="Search" type="text">
+            <form action="/admin/admin-manage/users" class="search-form">
+                <input class="search-input" name="search" placeholder="Search" type="text" value="{{ old('search') }}">
+                <button class="search-button" type="submit"><i class="fa-solid fa-search"></i> </button>
+            </form>
             <div>
-                <button class="add-user-button" id="add-user-button">Add New User</button>
-                <button class="delete-all-button" id="delete-all-button">Delete Selected</button>
+                <button class="add-user-button" id="add-user-button">Add New User
 
+                </button>
+                <button class="delete-selected-button" data-url="{{ route('adminDelete') }}"
+                    id="delete-selected-button">Delete
+                    Selected</button>
             </div>
         </div>
         <div class="users-table">
             <table id="admin-user-table">
                 <tr>
-                    <th><input class="select" id="selectAll" name="" type="checkbox"></th>
+                    <th>
+                        <input class="select" id="selectAll" name="" type="checkbox">
+                    </th>
                     <th>ID</th>
                     <th>Full Name</th>
                     <th>Username</th>
                     <th>Created at</th>
                     <th>Created by</th>
+                    <th>Role</th>
                 </tr>
                 @php
                     $a = 1;
@@ -26,7 +38,13 @@
 
                 @foreach ($admins as $admin)
                     <tr class="retrieved-row">
-                        <td><input class="select" id="" name="" type="checkbox"></td>
+
+                        <td>
+                            <input id="token" name="_token" type="hidden" value="{{ csrf_token() }}">
+
+                            <input class="select" data-id="{{ $admin->id }}" id="" name="record"
+                                type="checkbox">
+                        </td>
                         <td>
 
                             {{ $a++ }}
@@ -36,10 +54,12 @@
                         <td>{{ $admin->username }}</td>
                         <td>{{ $admin->created_at }}</td>
                         <td>{{ $admin->created_by }}</td>
+                        <td>{{ $admin->role }}</td>
                     </tr>
                 @endforeach
-            </table>
+            </table>{{ $admins->links() }}
         </div>
+
     </section>
     <section class="new-user-section" id="new-user-section">
         <div class="new-user-box" id="new-user-box">
@@ -54,6 +74,7 @@
                 @method('POST')
                 <div class="text-inputs">
                     <div class="input-box-new-user">
+
                         <input id="fullName" name="fullName" placeholder="Full Name" type="text">
                     </div>
 
@@ -69,6 +90,16 @@
                         <input id="confirmPassword" name="password_confirmation" placeholder="Confirm Password"
                             type="password">
                     </div>
+                    <div class="input-box-new-user">
+                        <select id="role" name="role">
+                            @if (Auth::guard('admin')->user()->role == 'Super-Admin')
+                                <option value="Super-Admin">Super-Admin</option>
+                            @endif
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+
+                    <input name="created_by" type="hidden" value="{{ Auth::guard('admin')->user()->username }}">
 
                 </div>
                 <div class="button-inputs">
@@ -78,72 +109,86 @@
             </form>
         </div>
     </section>
+    <script>
+        // Get the button element by id
+        var button = document.getElementById("delete-selected-button");
+        var flashMessage = document.getElementById("flash-message-content");
 
-    <script type=text/javascript>
-        $(document).ready(function() {
+        // Add a click event listener to the button
+        button.addEventListener("click", function() {
+            // Get the url from the data-url attribute
+            var url = button.getAttribute("data-url");
 
-            $('#newUserForm').submit(function(event) {
+            // Get the CSRF token from the hidden input field
+            var token = document.getElementById("token").value;
 
-                event.preventDefault();
-                // Prevent the form from submitting via the browser
-                var formData = $(this).serialize(); // Get the form data
-                $.ajax({
-                    url: '/admin/create', // The route to handle the request
-                    type: 'POST',
-                    data: formData,
-                    beforeSend: function() {
+            // Get all the checkboxes in the table rows
+            var checkboxes = document.querySelectorAll("input[name='record']");
 
-                    },
-                    success: function(response) {
+            // Create an empty array to store the ids of checked checkboxes
+            var ids = [];
 
-                        alert('Account Created Successfully!');
+            // Loop through the checkboxes and check if they are checked
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    // Get the id from the data-id attribute and push it to the array
+                    var id = checkboxes[i].getAttribute("data-id");
+                    ids.push(id);
+                }
+            }
 
-                    },
-                    error: function(response) {
-                        // Handle the error here
-                        if (response.status == 422) {
-                            var errors = response.responseJSON.errors;
-                            if (errors.fullName) {
-                                $('#RepMsg1').fadeIn();
+            // Create a new XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
 
-                                $('#RepMsg1').html(
-                                    '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
-                                    errors.fullName[0]
-                                );
-                                // $('#RepMsg').text(errors.fullName[0]);
-                                // $('#errorIcon').html(errorMessage).css({
-                                //     'color': 'blue',
-                                //     'font-weight': 'bold',
-                                //     'diplay': 'block'
-                                // });
+            // Open a DELETE request to the url
+            xhr.open("delete", url);
 
+            // Set the request header with the CSRF token and content type
+            xhr.setRequestHeader("X-CSRF-TOKEN", token);
+            xhr.setRequestHeader("Content-Type", "application/json");
 
+            // Send the request with the JSON stringified array of ids as data
+            xhr.send(JSON.stringify({
+                ids: ids
+            }));
 
-                            }
-                            if (errors.username) {
-                                $('#RepMsg1').fadeIn();
+            // Handle the response
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    // Parse the JSON response
+                    var response = JSON.parse(xhr.responseText);
+                    flashMessage.classList.add("active");
+                    flashMessage.style.background = "lime";
 
-                                $('#RepMsg1').html(
-                                    '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
-                                    errors.username[0]
-                                );
+                    // Display the success message
+                    flashMessage.innerHTML = response.message;
 
-                                // $('#RepMsg').text(errors.email[0]);
-                            }
-                            if (errors.password) {
-                                $('#RepMsg1').html(
-                                    '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
-                                    errors.password[0]
-                                );
+                    // Hide the flash message after 2 seconds
+                    setTimeout(function() {
+                        flashMessage.classList.remove("active");
+                    }, 3000);
 
-                                // $('#RepMsg').text(errors.password[0]);
-                            }
-                        } else {
-                            // Handle other errors here
-                        }
-                    }
-                });
-            });
+                    // Reload the page after 2 seconds
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000);
+                } else {
+                    flashMessage.classList.add("active");
+                    // Display the success message
+                    flashMessage.innerHTML = "Something went wrong. Please try again.";
+                    flashMessage.style.background = "crimson";
+
+                    // Hide the flash message after 2 seconds
+                    setTimeout(function() {
+                        flashMessage.classList.remove("active");
+                    }, 3000);
+
+                    // Reload the page after 2 seconds
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000);
+                }
+            };
         });
     </script>
 @endsection

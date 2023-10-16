@@ -94,8 +94,8 @@ Route::get('/listings/{listing}', [MainController::class, 'show']);
 //admin routes
 
 
-    //admin login routes
-Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('adminlogin')->middleware('guest');
+//admin login routes
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('adminlogin');
 Route::post('/admin/login-user', [AdminController::class, 'AdminLoginUser'])->name('adminloginuser');
 // routes/web.php
 
@@ -103,26 +103,27 @@ Route::post('/admin/create', [AdminController::class, 'createAdminUser'])->name(
 
 Route::post('/admin/logout', [AdminController::class, 'AdminLogout'])->name('adminlogout');
 
-    //route auth groups
-    Route::group(['middleware' => 'adminauth'], function () {
+Route::delete('/delete', [AdminController::class, 'deleteAdminUser'])->name('adminDelete');
 
-     Route::get('/admin/home', [AdminController::class, 'AdminDashboard']);
+//route auth groups
+Route::group(['middleware' => 'adminauth'], function () {
 
-     Route::get('/admin/home/dashboard', [AdminController::class, 'AdminDashboard']);
+    Route::get('/admin/home', [AdminController::class, 'AdminDashboard']);
 
-     Route::get('/admin/home/my-profile', [AdminController::class, 'AdminProfile']);
+    Route::get('/admin/home/dashboard', [AdminController::class, 'AdminDashboard']);
 
-     Route::get('/admin/website-content/news-and-events', [AdminController::class, 'AdminNewsEvents']);
+    Route::get('/admin/home/my-profile', [AdminController::class, 'AdminProfile']);
 
-        Route::get('admin/website-content/plans-and-prices', [AdminController::class, 'AdminPlansPrices']);
+    Route::get('/admin/website-content/news-and-events', [AdminController::class, 'AdminNewsEvents']);
 
-      Route::get('/admin/website-content/about-us', [AdminController::class, 'AdminAboutUs']);
+    Route::get('admin/website-content/plans-and-prices', [AdminController::class, 'AdminPlansPrices']);
 
-      Route::get('/admin/customer-manage/user-accounts', [AdminController::class, 'AdminUserAccounts']);
+    Route::get('/admin/website-content/about-us', [AdminController::class, 'AdminAboutUs']);
 
-     Route::get('/admin/customer-manage/subscriptions', [AdminController::class, 'AdminSubscriptions']);
+    Route::get('/admin/customer-manage/user-accounts', [AdminController::class, 'AdminUserAccounts']);
 
-     Route::get('/admin/admin-manage/users', [AdminController::class, 'AdminUsers']);
+    Route::get('/admin/customer-manage/subscriptions', [AdminController::class, 'AdminSubscriptions']);
 
-    });
+    Route::get('/admin/admin-manage/users', [AdminController::class, 'AdminUsers']);
 
+});

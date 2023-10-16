@@ -48,7 +48,7 @@ sideBarHamBtn.addEventListener("click", () => toggleAdminSidebar());
     var selectAll = $("#selectAll");
 
     // Get the delete all button element by id
-    var deleteAll = $("#delete-all-button");
+    var deleteAll = $("#delete-selected-button");
 
     // Add a change event listener to the select all checkbox
     selectAll.change(function() {
@@ -69,6 +69,7 @@ sideBarHamBtn.addEventListener("click", () => toggleAdminSidebar());
         }
     });
 
+
     // Add a change event listener to the checkboxes in the table rows
     table.find("input[type='checkbox']").change(function() {
         // Get the number of checked checkboxes in the table
@@ -82,6 +83,8 @@ sideBarHamBtn.addEventListener("click", () => toggleAdminSidebar());
         }
     });
 
+
+    // Get the delete button element by id
 
     var AddUserButton = $("#add-user-button");
     var NewUserSection = $("#new-user-section");
@@ -97,3 +100,95 @@ sideBarHamBtn.addEventListener("click", () => toggleAdminSidebar());
         NewUserSection.removeClass("active");
         NewUserBox.removeClass("active");
     });
+
+
+
+
+
+    var flashMessage = document.getElementById("flash-message-content");
+
+/* new user ajax code*/
+    $(document).ready(function() {
+
+        $('#newUserForm').submit(function(event) {
+
+            event.preventDefault();
+            // Prevent the form from submitting via the browser
+            var formData = $(this).serialize(); // Get the form data
+            $.ajax({
+                url: '/admin/create', // The route to handle the request
+                type: 'POST',
+                data: formData,
+                beforeSend: function() {
+
+                },
+                success: function(response) {
+                    NewUserSection.removeClass("active");
+                    NewUserBox.removeClass("active");
+                    flashMessage.classList.add("active");
+                    flashMessage.style.background = "lime";
+
+                    // Display the success message
+                    flashMessage.innerHTML = "User Created Successfully";
+
+                    // Hide the flash message after 2 seconds
+                    setTimeout(function() {
+                        flashMessage.classList.remove("active");
+                    }, 3000);
+
+                    // Reload the page after 2 seconds
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000);
+
+                },
+                error: function(response) {
+                    // Handle the error here
+                    if (response.status == 422) {
+                        var errors = response.responseJSON.errors;
+                        if (errors.fullName) {
+                            $('#RepMsg1').fadeIn();
+
+                            $('#RepMsg1').html(
+                                '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
+                                errors.fullName[0]
+                            );
+                            // $('#RepMsg').text(errors.fullName[0]);
+                            // $('#errorIcon').html(errorMessage).css({
+                            //     'color': 'blue',
+                            //     'font-weight': 'bold',
+                            //     'diplay': 'block'
+                            // });
+
+
+
+                        }
+                        if (errors.username) {
+                            $('#RepMsg1').fadeIn();
+
+                            $('#RepMsg1').html(
+                                '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
+                                errors.username[0]
+                            );
+
+                            // $('#RepMsg').text(errors.email[0]);
+                        }
+                        if (errors.password) {
+                            $('#RepMsg1').html(
+                                '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
+                                errors.password[0]
+                            );
+
+                            // $('#RepMsg').text(errors.password[0]);
+                        }
+                    } else {
+                        // Handle other errors here
+                    }
+                }
+            });
+        });
+    });
+
+
+
+

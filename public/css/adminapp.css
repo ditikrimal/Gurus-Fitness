@@ -51,6 +51,33 @@ body {
     color: white;
     overflow-y: scroll;
 }
+.flash-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1000;
+    padding: 0.5rem;
+}
+.flash-message-content {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--dark);
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transform: translateY(-150%);
+    transition: all 0.5s ease;
+}
+.flash-message-content.active {
+    transition: all 0.5s ease;
+    transform: translateY(50%);
+}
+
 /* layout styling */
 
 .admin-app {
@@ -302,6 +329,7 @@ body {
 /* layout styling */
 
 /*users styling */
+
 .admin-users-section {
     display: flex;
     flex-direction: column;
@@ -323,8 +351,14 @@ body {
     align-items: center;
     gap: 1rem;
 }
+.search-form {
+    flex-basis: 28%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
 .search-input {
-    width: 30%;
+    width: 100%;
     padding: 0.3rem 0.5rem;
     border: none;
     border-bottom: 1px solid #ccc;
@@ -333,11 +367,21 @@ body {
     background-color: transparent;
     font-size: 1rem;
 }
+.search-button {
+    border: 0;
+    padding: 0.2rem 0.75rem;
+    border-radius: 30%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.search-button i {
+    font-size: 0.8rem;
+}
 .manage-users-buttons div {
     display: flex;
     gap: 1rem;
 }
-.manage-users-buttons button {
+.manage-users-buttons button:not(.search-button) {
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 0.3rem;
@@ -349,16 +393,16 @@ body {
     transition: all 0.5s ease;
     font-weight: 500;
 }
-.manage-users-buttons button:hover:not(.delete-all-button) {
+.manage-users-buttons button:hover:not(.delete-selected-button) {
     background-color: #007bff8b;
     color: white;
     transition: all 0.3s ease;
 }
-.delete-all-button {
+.delete-selected-button {
     display: none;
+    background-color: crimson !important;
 }
-.delete-all-button.active {
-    background-color: crimson;
+.delete-selected-button.active {
     display: block;
 }
 .users-table {
@@ -451,6 +495,14 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+.input-box-new-user select {
+    width: 100%;
+    padding: 0.5rem 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    font-size: 0.9rem;
 }
 .text-inputs label {
     font-size: 0.8rem;

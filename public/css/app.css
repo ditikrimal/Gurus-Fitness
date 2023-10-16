@@ -8,6 +8,7 @@
     list-style: none;
     font-family: "Poppins", sans-serif;
 }
+
 *:focus {
     outline: none;
 }
@@ -693,6 +694,12 @@ footer {
     justify-content: space-between;
     gap: 7rem;
     align-items: center;
+    transition: 0.4s;
+}
+.plans-prices-box:hover {
+    box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.4s;
+    scale: 1.03;
 }
 .plan-title {
     font-size: 1.1rem;
@@ -736,6 +743,13 @@ footer {
     padding: 0.5rem 4rem;
     border: 1px solid black;
     border-radius: 10rem;
+    transition: 0.4s;
+}
+.plan-prices-button a:hover {
+    background-color: var(--dark);
+    color: white;
+    box-shadow: 0 0 50px 0 var(--light);
+    transition: 0.4s;
 }
 
 /* index page plans and prices styling*/
@@ -1405,7 +1419,7 @@ table {
     flex-basis: 23%;
     border-right: solid #555458 1px;
     display: flex;
-    padding: 40px 0px 0px 50px;
+    padding: 40px 0px 0px 00px;
     gap: 50px;
     flex-direction: column;
 }
@@ -1414,7 +1428,8 @@ table {
     display: flex;
     cursor: pointer;
     gap: 20px;
-    font-size: 1.17rem;
+    font-size: 1.1rem;
+    justify-content: center;
 }
 .profileOptions div:nth-child(1) {
     color: var(--primary);
@@ -2380,9 +2395,16 @@ MEDIA QUERIES
         border-radius: 0px;
     }
     .profileOptions {
-        flex-direction: row;
-        border-bottom: solid 0.001rem #555458;
-        padding: 25px 0px 25px 50px;
+        padding: 1rem;
+        display: grid;
+        place-content: center;
+        border: solid 1px #555458;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.7rem;
+    }
+    .userDiv {
+        display: flex;
+        justify-content: center;
     }
     .actionsDiv {
         flex-direction: column;

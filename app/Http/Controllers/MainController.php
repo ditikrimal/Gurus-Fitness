@@ -2,29 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\listing;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-use App\Models\carousel;
 use App\Models\Main;
 use App\Models\AboutData;
-use App\Models\News;
-use App\Models\Event;
 use App\Models\PlansAndPrice;
 
 class MainController extends Controller
 {
     public function index()
     {
-        return view('index',
-    [
-        'plans_prices'=>PlansAndPrice::orderBy('plan_prices', 'desc')->get(),
-    ]
-    );
+        return view(
+            'index',
+            [
+                'plans_prices' => PlansAndPrice::orderBy('plan_prices', 'asc')->get(),
+            ]
+        );
     }
     public function testSite()
     {
@@ -32,13 +28,14 @@ class MainController extends Controller
     }
     public function showListings()
     {
-        return view('navlinks.listings.listings',
-        // [
-        //     'listings' => Main::latest()
-        //         ->filter(request(['tag', 'search']))
-        //         ->paginate(6),
-        // ]
-    );
+        return view(
+            'navlinks.listings.listings',
+            // [
+            //     'listings' => Main::latest()
+            //         ->filter(request(['tag', 'search']))
+            //         ->paginate(6),
+            // ]
+        );
     }
     public function show(Main $listing)
     {
