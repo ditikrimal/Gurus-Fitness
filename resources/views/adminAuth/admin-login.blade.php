@@ -8,7 +8,7 @@
     <link href="{{ asset('css/adminapp.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/eac1eb5eeb.js"></script>
 
-    <title>Document</title>
+    <title>Admin Login</title>
 </head>
 
 <body>
