@@ -190,7 +190,7 @@
                     <form action="/logout" method="POST">
                         @csrf
                         <button class="logoutBtn" style="background-color: transparent; border:none;" type="submit">
-                            <a> Logout</a>
+                            Logout
 
                         </button>
 

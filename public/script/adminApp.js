@@ -5,6 +5,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
 
 
 //admin panel sidebar scripting
+
 const adminSidebar = document.getElementById("adminSidebar");
 const hamBurgerBtn = document.getElementById("hamBurgerBtn");
 const adminAppMain= document.getElementById("adminAppMain");
@@ -15,8 +16,12 @@ const toggleAdminSidebar = () => {
 }
 hamBurgerBtn.addEventListener("click", () => toggleAdminSidebar());
 sideBarHamBtn.addEventListener("click", () => toggleAdminSidebar());
+
 //admin panel sidebar scripting end
-    // Select all the li elements that are inside the ul elements with the sideBarUl class
+
+
+//side links background color change
+// Select all the li elements that are inside the ul elements with the sideBarUl class
     var liElements = $(".sideBarUl > li");
 
     // Add a click event handler to each li element
