@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('events_title')->nullable();
             $table->longText('events_body')->nullable();
             $table->timestamp('created_at');
+            $table->timestamp('udated_at');
+
         });
     }
 

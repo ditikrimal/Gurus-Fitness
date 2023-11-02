@@ -65,8 +65,7 @@
 
                 <li>
                     <a href="/about-us">
-                        <i class="fa-solid fa-circle-exclamation"></i>
-                        about us
+                        <i class="fa-solid fa-circle-info"></i> about us
                     </a>
                 </li>
                 <li>
@@ -126,7 +125,7 @@
 
                 <li>
                     <a href="/about-us">
-                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <i class="fa-solid fa-circle-info"></i>
                         about us
                     </a>
                 </li>

@@ -103,7 +103,15 @@ Route::post('/admin/create', [AdminController::class, 'createAdminUser'])->name(
 
 Route::post('/admin/logout', [AdminController::class, 'AdminLogout'])->name('adminlogout');
 
-Route::delete('/delete', [AdminController::class, 'deleteAdminUser'])->name('adminDelete');
+Route::delete('/admin/user/delete', [AdminController::class, 'deleteAdminUser'])->name('adminDelete');
+
+//news and events create and delete
+Route::post('/admin/news-and-events/create-news', [AdminController::class, 'createNews'])->name('createNews');
+
+Route::delete('/admin/news-and-events/delete-news', [AdminController::class, 'deleteNewsEvents'])->name('newsEventsDelete');
+
+
+Route::post('/admin/news-and-events/create-event', [AdminController::class, 'createEvent'])->name('createEvent');
 
 //route auth groups
 Route::group(['middleware' => 'adminauth'], function () {
@@ -119,6 +127,8 @@ Route::group(['middleware' => 'adminauth'], function () {
     Route::get('admin/website-content/plans-and-prices', [AdminController::class, 'AdminPlansPrices']);
 
     Route::get('/admin/website-content/about-us', [AdminController::class, 'AdminAboutUs']);
+
+    Route::get('/admin/website-content/notices', [AdminController::class, 'AdminNotices']);
 
     Route::get('/admin/customer-manage/user-accounts', [AdminController::class, 'AdminUserAccounts']);
 

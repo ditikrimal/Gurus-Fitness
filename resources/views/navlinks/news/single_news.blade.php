@@ -5,7 +5,7 @@
                 <div class="news-heading">
                     <h1>{{ $news->news_title }}</h1>
                 </div>
-                <div class="news-image"><img alt="" src="{{ asset('images/Image-1.jpg') }}"></div>
+                <div class="news-image"><img alt="" src="{{ asset($news->news_image) }}"></div>
             </div>
             <div class="news-bar-vertical latest-post">
                 @php

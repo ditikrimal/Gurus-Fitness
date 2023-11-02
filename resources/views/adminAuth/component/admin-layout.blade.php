@@ -52,13 +52,19 @@
                             Events</a>
                     </li>
                     <li class="sideBarLinks">
+                        <a href="/admin/website-content/notices"> <i class="fa-solid fa-circle-exclamation"></i>
+                            Important Notice</a>
+                    </li>
+                    <li class="sideBarLinks">
                         <a href="/admin/website-content/plans-and-prices"> <i class="fa-solid fa-list"></i>
                             Plans And Prices</a>
                     </li>
+
                     <li class="sideBarLinks">
-                        <a href="/admin/website-content/about-us"> <i class="fa-solid fa-circle-exclamation"></i>
+                        <a href="/admin/website-content/about-us"> <i class="fa-solid fa-circle-info"></i>
                             About Us</a>
                     </li>
+
 
                     <li class="sideBarLinks title">Customer Manage</li>
 
@@ -125,9 +131,10 @@
                 @yield('news-and-events')
                 @yield('plans-and-prices')
                 @yield('about-us')
+                @yield('notice')
                 @yield('user-accounts')
                 @yield('subscriptions')
-                @yield('users')
+                @yield('admin-users')
 
 
             </div>

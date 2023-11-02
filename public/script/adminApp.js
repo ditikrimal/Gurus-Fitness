@@ -52,8 +52,6 @@ sideBarHamBtn.addEventListener("click", () => toggleAdminSidebar());
     // Get the select all checkbox element by id
     var selectAll = $("#selectAll");
 
-    // Get the delete all button element by id
-    var deleteAll = $("#delete-selected-button");
 
     // Add a change event listener to the select all checkbox
     selectAll.change(function() {
@@ -74,6 +72,27 @@ sideBarHamBtn.addEventListener("click", () => toggleAdminSidebar());
         }
     });
 
+    // Assuming you have a variable to reference the "Delete Selected" button and the checkboxes
+var deleteAll = document.getElementById("delete-selected-button");
+var checkboxes = document.querySelectorAll(".select"); // Use a class selector
+
+checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener("change", function() {
+        // Check if any checkbox is checked
+        var anyCheckboxChecked = Array.from(checkboxes).some(function(cb) {
+            return cb.checked;
+        });
+
+        // Enable or disable the "Delete Selected" button based on whether any checkbox is checked
+        if (anyCheckboxChecked) {
+            deleteAll.classList.add("active");
+        } else {
+            deleteAll.classList.remove("active");
+        }
+    });
+});
+
+
 
     // Add a change event listener to the checkboxes in the table rows
     table.find("input[type='checkbox']").change(function() {
@@ -91,6 +110,7 @@ sideBarHamBtn.addEventListener("click", () => toggleAdminSidebar());
 
     // Get the delete button element by id
 
+    // User Section PopUp
     var AddUserButton = $("#add-user-button");
     var NewUserSection = $("#new-user-section");
     var NewUserBox = $("#new-user-box");
@@ -104,10 +124,40 @@ sideBarHamBtn.addEventListener("click", () => toggleAdminSidebar());
     CloseNewUserSection.click(function() {
         NewUserSection.removeClass("active");
         NewUserBox.removeClass("active");
+
     });
 
+    // News Section PopUp
+    var AddNewsButton = $("#add-news-button");
+    var NewNewsSection = $("#new-news-section");
+    var NewNewsBox = $("#new-news-box");
+    var CloseNewNewsSection = $("#news-form-cancel-btn");
 
+    AddNewsButton.click(function() {
+        NewNewsSection.addClass("active");
+        NewNewsBox.addClass("active");
+    });
 
+    CloseNewNewsSection.click(function() {
+        NewNewsSection.removeClass("active");
+        NewNewsBox.removeClass("active");
+    });
+
+    // Event Section PopUp
+    var AddEventButton = $("#add-event-button");
+    var NewEventSection = $("#new-event-section");
+    var NewEventBox = $("#new-event-box");
+    var CloseEventSection=$("#event-form-cancel-btn");
+
+    AddEventButton.click(function() {
+        NewEventSection.addClass("active");
+        NewEventBox.addClass("active");
+        });
+
+    CloseEventSection.click(function() {
+    NewEventSection.removeClass("active");
+    NewEventBox.removeClass("active");
+    });
 
 
     var flashMessage = document.getElementById("flash-message-content");
@@ -193,6 +243,252 @@ sideBarHamBtn.addEventListener("click", () => toggleAdminSidebar());
             });
         });
     });
+/* new user ajax code end*/
+
+/* create news ajax code*/
+$(document).ready(function() {
+
+    $('#newNewsForm').submit(function(event) {
+
+        event.preventDefault();
+        // Prevent the form from submitting via the browser
+        var formData = new FormData(document.getElementById('newNewsForm'));
+        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+
+        $.ajax({
+            url: '/admin/news-and-events/create-news', // The route to handle the request
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            beforeSend: function() {
+            },
+            success: function() {
+                NewUserSection.removeClass("active");
+                NewUserBox.removeClass("active");
+                flashMessage.classList.add("active");
+                flashMessage.style.background = "lime";
+
+                // Display the success message
+                flashMessage.innerHTML = "News Added Successfully";
+
+                // Hide the flash message after 2 seconds
+                setTimeout(function() {
+                    flashMessage.classList.remove("active");
+                }, 3000);
+
+                // Reload the page after 2 seconds
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+
+            },
+            error: function(response) {
+                // Handle the error here
+                if (response.status == 422) {
+
+                    var errors = response.responseJSON.errors;
+                    if (errors.news_title) {
+                        $('#RepMsg1').fadeIn();
+
+                        $('#RepMsg1').html(
+                            '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
+                            errors.news_title[0]
+                        );
+                        // $('#RepMsg').text(errors.fullName[0]);
+                        // $('#errorIcon').html(errorMessage).css({
+                        //     'color': 'blue',
+                        //     'font-weight': 'bold',
+                        //     'diplay': 'block'
+                        // });
+                    }
+                    if (errors.news_title) {
+                        $('#RepMsg1').fadeIn();
+
+                        $('#RepMsg1').html(
+                            '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
+                            errors.news_body[0]
+                        );
+
+                        // $('#RepMsg').text(errors.email[0]);
+                    }
+                    if (errors.news_image) {
+                        $('#RepMsg1').html(
+                            '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
+                            errors.news_image[0]
+                        );
+
+                        // $('#RepMsg').text(errors.password[0]);
+                    }
+
+                }
+                else {
+                }
+            }
+        });
+    }
+    );
+});
+
+
+/* create news ajax code end*/
+
+/* create event ajax code*/
+
+$(document).ready(function() {
+
+    $('#newEventForm').submit(function(event) {
+
+        event.preventDefault();
+        // Prevent the form from submitting via the browser
+        var formData = new FormData(document.getElementById('newEventForm'));
+        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+
+        $.ajax({
+            url: '/admin/news-and-events/create-event', // The route to handle the request
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            beforeSend: function() {
+            },
+            success: function() {
+                NewUserSection.removeClass("active");
+                NewUserBox.removeClass("active");
+                flashMessage.classList.add("active");
+                flashMessage.style.background = "lime";
+
+                // Display the success message
+                flashMessage.innerHTML = "Event Added Successfully";
+
+                // Hide the flash message after 2 seconds
+                setTimeout(function() {
+                    flashMessage.classList.remove("active");
+                }, 3000);
+
+                // Reload the page after 2 seconds
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+
+            },
+            error: function(response) {
+                // Handle the error here
+                if (response.status == 422) {
+
+                    var errors = response.responseJSON.errors;
+                    if (errors.events_title) {
+
+                        $('#RepMsg2').fadeIn();
+
+                        $('#RepMsg2').html(
+                            '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
+                            errors.events_title[0]
+                        );
+                        // $('#RepMsg').text(errors.fullName[0]);
+                        // $('#errorIcon').html(errorMessage).css({
+                        //     'color': 'blue',
+                        //     'font-weight': 'bold',
+                        //     'diplay': 'block'
+                        // });
+                    }
+                    if (errors.events_body) {
+                        $('#RepMsg2').fadeIn();
+
+                        $('#RepMsg2').html(
+                            '<i class="fa-solid fa-triangle-exclamation" style="color:red; font-size:11px;"></i> ' +
+                            errors.events_body[0]
+                        );
+
+                        // $('#RepMsg').text(errors.email[0]);
+                    }
+
+
+                }
+                else {
+                }
+            }
+        });
+    }
+    );
+});
+
+//deleting records
+function deleteSelectedRecords(route) {
+
+        // Get the CSRF token from the hidden input field
+        var token = document.getElementById("token").value;
+
+        // Get all the checkboxes in the table rows
+        var checkboxes = document.querySelectorAll("input[name='record']");
+
+        // Create an empty array to store the ids of checked checkboxes
+        var ids = [];
+
+        // Loop through the checkboxes and check if they are checked
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                // Get the id from the data-id attribute and push it to the array
+                var id = checkboxes[i].getAttribute("data-id");
+                ids.push(id);
+            }
+        }
+
+        // Create a new XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
+
+        // Open a DELETE request to the provided route
+        xhr.open("delete", route);
+
+        // Set the request header with the CSRF token and content type
+        xhr.setRequestHeader("X-CSRF-TOKEN", token);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        // Send the request with the JSON stringified array of ids as data
+        xhr.send(JSON.stringify({
+            ids: ids
+        }));
+
+        // Handle the response
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                // Parse the JSON response
+                var response = JSON.parse(xhr.responseText);
+                console.log(response);
+
+                flashMessage.classList.add("active");
+                flashMessage.style.background = "lime";
+
+                // Display the success message
+                flashMessage.innerHTML = response.message;
+
+                // Hide the flash message after 2 seconds
+                setTimeout(function() {
+                    flashMessage.classList.remove("active");
+                }, 3000);
+
+                // Reload the page after 2 seconds
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+            } else {
+                flashMessage.classList.add("active");
+                // Display the success message
+                flashMessage.innerHTML = "Something went wrong. Please try again.";
+                flashMessage.style.background = "crimson";
+
+                // Hide the flash message after 2 seconds
+                setTimeout(function() {
+                    flashMessage.classList.remove("active");
+                }, 3000);
+
+                // Reload the page after 2 seconds
+                setTimeout(function() {
+                    location.reload();
+                }, 2000);
+            }
+        };
+    }
 
 
 

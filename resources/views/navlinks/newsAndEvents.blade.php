@@ -10,7 +10,7 @@
                 <div class="news-box">
 
                     @foreach ($news as $news_item)
-                        <div class="news-container"><img alt="" src="../images/Image-1.jpg">
+                        <div class="news-container"><img alt="" src="{{ asset($news_item->news_image) }}">
                             <div class="news-container-content">
                                 <div class="news-container-heading">{{ $news_item->news_title }}</div>
                                 <div class="news-container-main-content">{{ $news_item->news_body }}</div>

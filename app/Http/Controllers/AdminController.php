@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use App\Models\News;
+use App\Models\Event;
 
 
 class AdminController extends Controller
@@ -27,7 +29,58 @@ class AdminController extends Controller
     }
     public function AdminNewsEvents()
     {
-        return view('adminAuth.websiteContent.news-and-events');
+        return view('adminAuth.websiteContent.news-and-events',
+    [
+        'news' => News::all(),
+        'events' => Event::all()
+    ]
+    );
+    }
+    public function createNews(Request $request)
+    {
+
+        $inputData = $request->validate([
+            'news_title' => 'required',
+            'news_body' => 'required',
+            'news_image' => 'required|file',
+        ], [
+            'news_title.required' => 'Empty fields',
+            'news_body.required' => 'Empty fields',
+            'news_image.required' => 'Empty fields',
+
+        ]);
+
+        $path = $request->file('news_image')->store('public/images/NewsImages');
+        $pathWithoutPublic = str_replace('public/', '', $path);
+        $news = new News;
+        $news->news_title = $inputData['news_title'];
+        $news->news_body = $inputData['news_body'];
+        $news->news_image = 'storage/' . $pathWithoutPublic;
+        $news->save();
+
+        return redirect()->back()->with('success', 'News added successfully.');
+    }
+    public function createEvent(Request $request)
+    {
+        $inputData=$request->validate([
+            'events_title'=>'required',
+            'events_body'=>'required',
+        ],[
+            'events_title.required'=>'Empty fields',
+            'events_body.required'=>'Empty fields',
+        ]);
+
+        $event=new Event;
+        $event->events_title=$inputData['events_title'];
+        $event->events_body=$inputData['events_body'];
+        $event->save();
+        return redirect()->back()->with('success', 'Event added successfully.');
+    }
+
+
+    public function AdminNotices()
+    {
+        return view('adminAuth.websiteContent.notice');
     }
     public function AdminPlansPrices()
     {
@@ -112,6 +165,15 @@ class AdminController extends Controller
         // Redirect back with a success message
         return redirect()->back()->with('success', 'Admin user created successfully.');
     }
+
+    public function deleteNewsEvents(Request $request){
+        $ids = $request->input('ids');
+        News::whereIn('id', $ids)->delete();
+        Event::whereIn('id', $ids)->delete();
+        return response()->json(['message' => 'Selected news and events deleted'], 200);
+
+    }
+
     public function AdminLogout(Request $request)
     {
         Auth::guard('admin')->logout();
