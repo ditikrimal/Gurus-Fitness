@@ -32,7 +32,7 @@
 
 
                 @foreach ($news as $news_item)
-                    <div class="news-event-container">
+                    <div class="data-fetching-container">
                         <input id="token" name="_token" type="hidden" value="{{ csrf_token() }}">
                         <input class="select" data-id="{{ $news_item->id }}" id="selectAllNews" name="record"
                             type="checkbox">
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="button-inputs">
-                    <input type="submit" value="Create">
+                    <input type="submit" value="Add">
                     <input id="news-form-cancel-btn" type="button" value="cancel">
                 </div>
             </form>
@@ -122,7 +122,7 @@
 
                 </div>
                 <div class="button-inputs">
-                    <input type="submit" value="Create">
+                    <input type="submit" value="Add">
                     <input id="event-form-cancel-btn" type="button" value="cancel">
                 </div>
             </form>

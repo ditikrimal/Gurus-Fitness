@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\News;
 use App\Models\Event;
+use App\Models\Notice;
+use App\Models\PlansAndPrice;
 
 
 class AdminController extends Controller
@@ -29,12 +31,13 @@ class AdminController extends Controller
     }
     public function AdminNewsEvents()
     {
-        return view('adminAuth.websiteContent.news-and-events',
-    [
-        'news' => News::all(),
-        'events' => Event::all()
-    ]
-    );
+        return view(
+            'adminAuth.websiteContent.news-and-events',
+            [
+                'news' => News::all(),
+                'events' => Event::all()
+            ]
+        );
     }
     public function createNews(Request $request)
     {
@@ -62,30 +65,95 @@ class AdminController extends Controller
     }
     public function createEvent(Request $request)
     {
-        $inputData=$request->validate([
-            'events_title'=>'required',
-            'events_body'=>'required',
-        ],[
-            'events_title.required'=>'Empty fields',
-            'events_body.required'=>'Empty fields',
+        $inputData = $request->validate([
+            'events_title' => 'required',
+            'events_body' => 'required',
+        ], [
+            'events_title.required' => 'Empty fields',
+            'events_body.required' => 'Empty fields',
         ]);
 
-        $event=new Event;
-        $event->events_title=$inputData['events_title'];
-        $event->events_body=$inputData['events_body'];
+        $event = new Event;
+        $event->events_title = $inputData['events_title'];
+        $event->events_body = $inputData['events_body'];
         $event->save();
         return redirect()->back()->with('success', 'Event added successfully.');
     }
 
+    public function deleteNewsEvents(Request $request)
+    {
+        $ids = $request->input('ids');
+        News::whereIn('id', $ids)->delete();
+        Event::whereIn('id', $ids)->delete();
+        return response()->json(['message' => 'Selected news and events deleted'], 200);
 
+    }
     public function AdminNotices()
     {
-        return view('adminAuth.websiteContent.notice');
+        return view(
+            'adminAuth.websiteContent.notice'
+            ,
+            [
+                'notices' => Notice::all()
+            ]
+
+        );
     }
+    public function createNotice(Request $request)
+    {
+        $inputData = $request->validate([
+            'notice_title' => 'required'
+        ], [
+            'notice_title.required' => 'Empty field',
+        ]);
+        $notice = new Notice;
+        $notice->notice_title = $inputData['notice_title'];
+        $notice->save();
+        return redirect()->back()->with('success', 'Notice added successfully.');
+    }
+
+    public function deleteNotice(Request $request)
+    {
+        $ids = $request->input('ids');
+        Notice::whereIn('id', $ids)->delete();
+        return response()->json(['message' => 'Selected news and events deleted'], 200);
+    }
+
     public function AdminPlansPrices()
     {
-        return view('adminAuth.websiteContent.plans-and-prices');
+        return view(
+            'adminAuth.websiteContent.plans-and-prices',
+            ['plans' => PlansAndPrice::all()]
+        );
     }
+
+    public function createPlan(Request $request)
+    {
+
+        $inputData = $request->validate([
+            'plan_title' => 'required',
+            'plan_prices' => 'required',
+            'plan_features' => 'required',
+        ], [
+            'plan_title.required' => 'Empty fields',
+            'plan_prices.required' => 'Empty fields',
+            'plan_features.required' => 'Empty fields',
+        ]);
+
+        $plan = new PlansAndPrice;
+        $plan->plan_title = $inputData['plan_title'];
+        $plan->plan_prices = $inputData['plan_prices'];
+        $plan->plan_features = $inputData['plan_features'];
+
+        $plan->save();
+
+        return redirect()->back()->with('success', 'Plan added successfully.');
+
+
+
+
+    }
+
     public function AdminAboutUs()
     {
         return view('adminAuth.websiteContent.about-us');
@@ -140,7 +208,7 @@ class AdminController extends Controller
                 'username' => ['required', Rule::unique('admins', 'username')],
                 'password' => ['required', 'confirmed', 'min:6'],
                 'created_by' => 'required',
-                'role'=> 'required'
+                'role' => 'required'
 
             ],
             [
@@ -166,13 +234,7 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Admin user created successfully.');
     }
 
-    public function deleteNewsEvents(Request $request){
-        $ids = $request->input('ids');
-        News::whereIn('id', $ids)->delete();
-        Event::whereIn('id', $ids)->delete();
-        return response()->json(['message' => 'Selected news and events deleted'], 200);
 
-    }
 
     public function AdminLogout(Request $request)
     {

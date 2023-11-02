@@ -113,6 +113,16 @@ Route::delete('/admin/news-and-events/delete-news', [AdminController::class, 'de
 
 Route::post('/admin/news-and-events/create-event', [AdminController::class, 'createEvent'])->name('createEvent');
 
+//notice create and delete
+
+Route::post('/admin/notices/create-notice', [AdminController::class, 'createNotice'])->name('createNotice');
+
+Route::delete('/admin/notices/delete-notice', [AdminController::class, 'deleteNotice'])->name('deleteNotice');
+
+//Plans and prices create and delete
+
+Route::post('/admin/plans/create-plan', [AdminController::class, 'createPlan'])->name('createPlan');
+
 //route auth groups
 Route::group(['middleware' => 'adminauth'], function () {
 

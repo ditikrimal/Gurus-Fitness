@@ -1802,7 +1802,6 @@ table {
 }
 .notice-box-content {
     padding: 5%;
-    display: flex;
 }
 .notice-box-content div {
     display: flex;
