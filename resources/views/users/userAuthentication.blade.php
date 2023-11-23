@@ -15,7 +15,18 @@
 
                     <img alt="" src="./images/Equipments.jpg">
                     <div class="user-content-box">
+                        <div class="user-content-box">
 
+                            <h2>Welcome to Gurus Fitness!</h2>
+                            <p>Unlock a world of fitness and wellness with Gurus Fitness. Join our community to achieve
+                                your fitness goals and stay healthy.</p>
+                            <ul>
+                                <li>Access personalized workout plans</li>
+                                <li>Track your progress and achievements</li>
+                                <li>Connect with fitness enthusiasts</li>
+                                <li>Stay updated with the latest fitness trends</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -27,7 +38,7 @@
                             @csrf
 
                             <div class="logo">
-                                <h2>United <span>Limited </span></h2>
+                                <h2>Gurus <span>Fitness </span></h2>
                             </div>
                             <div class="heading">
                                 <h4>Login to Continue</h4>
@@ -74,7 +85,7 @@
                             @csrf
 
                             <div class="logo">
-                                <h2>United <span>Limited </span></h2>
+                                <h2>Gurus <span>Fitness </span></h2>
                             </div>
                             <div class="heading">
                                 <h4>Get Started</h4>
@@ -220,7 +231,7 @@
                 <form class="OTPForm" id="otpForm">
                     @csrf
                     @method('post')
-                    <div class="OTPheading">United <span>Limited</span></div>
+                    <div class="OTPheading">Gurus <span>Fitness</span></div>
                     <div class="OTPcontent">
                         An OTP has been sent to your Email.
                         <p>Please check your<span style="color:red;"> inbox.</span></p>

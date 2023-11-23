@@ -9,6 +9,9 @@
     <!-- <Required Scripts> -->
 
 
+    <title> Gurus Fitness</title>
+    <link href="{{ asset('images/GurusFitnessLogo.png') }}" rel="shortcut icon" type="image/png" />
+
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -20,7 +23,7 @@
 </head>
 
 
-<title> </title>
+
 <x-profile-alert-banner />
 
 
