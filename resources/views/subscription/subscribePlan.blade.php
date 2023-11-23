@@ -35,12 +35,12 @@
                 </div>
                 <div class="payment-options-inputs">
                     <input data-payment-method="khalti" id="khalti" name="payment" type="radio">
-                    <label for="ime-pay"><img alt="" class="payment-option-img"
+                    <label for="khalti"><img alt="" class="payment-option-img"
                             src="{{ asset('images/PaymentLogos/Khalti.png') }}"></label>
                 </div>
                 <div class="payment-options-inputs">
                     <input data-payment-method="ime-pay" id="ime-pay" name="payment" type="radio">
-                    <label for="khalti"><img alt="" class="payment-option-img"
+                    <label for="ime-pay"><img alt="" class="payment-option-img"
                             src="{{ asset('images/PaymentLogos/Ime-Pay.png') }}"></label>
                 </div>
 
@@ -97,7 +97,8 @@
 
 
 
-                <form action="/user/esewa/payment" id="proceed-payment-form" onsubmit="return validatePaymentMethod()">
+                <form action="/user/{{ $passedPlan['plan_title'] }}/esewa/payment" id="proceed-payment-form"
+                    onsubmit="return validatePaymentMethod()">
                     @csrf
                     @method('POST')
                     <input id="subscription-plan-month-input" name="subscription_month" type="hidden" value="1">

@@ -1,5 +1,4 @@
 <x-layout>
-
     <section class="profileSection">
         <div class="profileMain">
             <div class="profileHeading">
@@ -9,6 +8,7 @@
                 <p id='RepMsg2' style="float: right"></p>
 
 
+
             </div>
             <div class="actionsDiv">
                 <div class="profileOptions">
@@ -16,7 +16,6 @@
 
                     <div id="securityBtn"><i class="fa-solid fa-lock"></i><span>Security </span></div>
 
-                    <div id="subscriptionBtn"><i class="fa-solid fa-cube"></i><span> Packages </span></div>
 
                 </div>
                 <div class="optionContent">
@@ -108,9 +107,7 @@
                         @endif
                         @endif
                     </div>
-                    <div class=" userDiv subscription-div" id="userSubscription">
-                        <h1>My Subscription</h1>
-                    </div>
+
                 </div>
 
             </div>
@@ -223,4 +220,6 @@
             });
         });
     </script>
+    <script src="{{ asset('script/profileApp.js') }}"></script>
+
 </x-layout>

@@ -2776,6 +2776,9 @@ MEDIA QUERIES
     .actionsDiv {
         flex-direction: column;
     }
+    .securityFormDiv {
+        display: none;
+    }
     .formContents {
         display: flex;
         flex-direction: column;

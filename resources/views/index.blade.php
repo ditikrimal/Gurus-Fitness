@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img alt="hero image" src="{{ asset('/images/Image-1.jpg') }}">
+                <img alt="hero image" src="{{ asset('/images/HeroImage.jpg') }}">
             </div>
         </div>
     </main>
@@ -128,7 +128,7 @@
                         </div>
                     </div>
                     <div class="plan-prices-button">
-                        <a href="/user/{{ $plan->id }}/subscription">
+                        <a href="/user/{{ $plan->id }}/{{ $plan->plan_title }}/subscription">
                             Get Started
                         </a>
                     </div>

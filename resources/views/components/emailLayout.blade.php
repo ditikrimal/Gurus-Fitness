@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <script src="https://kit.fontawesome.com/eac1eb5eeb.js"></script>
 
 </head>
@@ -34,11 +34,11 @@
             <td style="padding: 28px 20px; ">
                 <span>Contact Us:</span>
                 <br>
-                <span style="text-decoration:none; color: #ffa513"> <i style="font-size: 12px;margin-right:5px;"
-                        class="fa-brands fa-google">
+                <span style="text-decoration:none; color: #ffa513"> <i class="fa-brands fa-google"
+                        style="font-size: 12px;margin-right:5px;">
                     </i>example@gmail.com</span>
                 <br>
-                <span style="color: #87ceeb"><i style="font-size: 12px;margin-right:5px;" class="fa-solid fa-phone">
+                <span style="color: #87ceeb"><i class="fa-solid fa-phone" style="font-size: 12px;margin-right:5px;">
                     </i>+977 9988776655</span>
             </td>
             </th>
@@ -47,7 +47,7 @@
             <td>
                 <hr style="height: 0.8px; background-color:black;">
                 <p>
-                    Copyright © 2023 United Limited.
+                    Copyright © 2023 Gurus of Fitness.
                 </p>
                 <hr style="height: 0.7px; background-color:black;">
 

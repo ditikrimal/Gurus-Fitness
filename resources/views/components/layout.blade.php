@@ -30,7 +30,7 @@
 
     <div class="logoContainer">
         <a href="/">
-            <h1>United <span>Limited</span></h1>
+            <h1>Gurus of <span>Fitness</span></h1>
         </a>
 
     </div>
@@ -255,7 +255,7 @@
             </div>
             <div class="get-in-touch-socials">
                 <div class="contact-social mail"><i
-                        class="fa-solid fa-envelope"></i><span>unitedlimited.feedback@gmail.com</span>
+                        class="fa-solid fa-envelope"></i><span>gurusoffitness.feedback@gmail.com</span>
                 </div>
                 <div class="contact-social phone"><i class="fa-solid fa-phone"></i>
                     <span>+977 9751423169</span>
@@ -280,8 +280,8 @@
     </div>
     <div class="footer-bottom">
         <div class="footer-bottom-left">
-            <h1>United <span>Limited</span></h1>
-            <p> Your Trusted Partner in Real Estate</p>
+            <h1>Gurus of <span>Fitness</span></h1>
+            <p> Your dream body with gurus of fitness </p>
         </div>
         <div class="footer-bottom-center">
             <h2>We are also in </h2>
@@ -305,7 +305,7 @@
     <div class="footer-last">
         <hr>
 
-        <div class="copyright-footer">&copy; Copyright United Limited 2023</div>
+        <div class="copyright-footer">&copy; Copyright Gurus of Futness 2023</div>
         <div class="dev-description"><span>Developed by <a href="https:/www.ditikrimal.com.np" target="_blank"> Ditik
                     Rimal</a></span></div>
     </div>

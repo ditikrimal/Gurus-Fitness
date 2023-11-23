@@ -72,9 +72,9 @@ Route::get('/news/{news_id}/{news_title}', [NewsAndEventsController::class, 'sho
 
 //subscription page routes'
 
-Route::get('/user/{plan_id}/subscription', [SubscriptionController::class, 'subscribePlan'])->middleware('auth');
+Route::get('/user/{plan_id}/{plan_title}/subscription', [SubscriptionController::class, 'subscribePlan'])->middleware('auth');
 
-Route::get('/user/esewa/payment', [EsewaController::class, 'esewaPayment'])->middleware('auth');
+Route::get('/user/{plan_title}/esewa/payment', [EsewaController::class, 'esewaPayment'])->middleware('auth');
 
 Route::get('/user/subscription/esewa/payment-success', [EsewaController::class, 'esewaSuccess'])->middleware('auth');
 
