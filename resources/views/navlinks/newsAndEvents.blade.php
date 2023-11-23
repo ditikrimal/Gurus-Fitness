@@ -48,7 +48,7 @@
 
         <div class="news-bottom">
             <div class="events-box">
-                <div class="events-box-heading">Events from Gurus of Fitness</div>
+                <div class="events-box-heading">Events from Gurus Fitness</div>
                 @foreach ($events as $event)
                     <div class="event-container">
                         <div class="event-container-content">
@@ -67,7 +67,7 @@
             </div>
             <div class="notice-box">
                 <div class="notice-box-heading">
-                    <h1>Important Notice from Gurus of Fitness</h1>
+                    <h1>Important Notice from Gurus Fitness</h1>
                 </div>
 
                 <div class="notice-box-content">

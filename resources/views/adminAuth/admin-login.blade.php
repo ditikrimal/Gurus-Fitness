@@ -18,7 +18,7 @@
             <form action="/admin/login-user" class="admin-form" method="POST">
                 @csrf
                 @method('POST')
-                <h1>Fitness <span>Guru</span></h1>
+                <h1>Gurus <span>Fitness</span></h1>
                 <h2>Admin Login</h2>
                 @if ($errors->any())
                     <p id='RepMsg1'><i class="fa-solid fa-triangle-exclamation"> </i>

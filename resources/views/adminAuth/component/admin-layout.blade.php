@@ -17,7 +17,7 @@
         <div class="sidebar" id="adminSidebar">
             <div class="sidebar-logocontainer">
 
-                <p>Fitness <span>Guru</span></p>
+                <p>Gurus <span>Fitness</span></p>
 
                 <svg class="sidebar-ham" fill="none" height="64px" id="sideBarHamBtn" viewBox="0 -0.5 25 25"
                     width="64px" xmlns="http://www.w3.org/2000/svg">
