@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\listing;
 use App\Http\Controllers\NewsAndEventsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\EsewaController;
 
 //index_page
 Route::get('/', [MainController::class, 'index'])->name('index');
@@ -67,6 +69,23 @@ Route::get('/about-us', [MainController::class, 'aboutUs']);
 Route::get('/news-and-events', [NewsAndEventsController::class, 'newsEvents']);
 Route::get('/news/{news_id}/{news_title}', [NewsAndEventsController::class, 'showSingleNews']);
 
+
+//subscription page routes'
+
+Route::get('/user/{plan_id}/subscription', [SubscriptionController::class, 'subscribePlan'])->middleware('auth');
+
+Route::get('/user/esewa/payment', [EsewaController::class, 'esewaPayment'])->middleware('auth');
+
+Route::get('/user/subscription/esewa/payment-success', [EsewaController::class, 'esewaSuccess'])->middleware('auth');
+
+Route::get('/user/subscription/esewa/payment-failure', [EsewaController::class, 'esewaFailure'])->middleware('auth');
+
+Route::get('/user/my-subscriptions', [SubscriptionController::class, 'mySubscription'])->middleware('auth');
+
+
+
+
+
 //Below code will be used while making reservations in the website
 
 //create listing by user
@@ -122,6 +141,10 @@ Route::delete('/admin/notices/delete-notice', [AdminController::class, 'deleteNo
 //Plans and prices create and delete
 
 Route::post('/admin/plans/create-plan', [AdminController::class, 'createPlan'])->name('createPlan');
+
+Route::delete('/admin/plans-and-prices/delete-news', [AdminController::class, 'deletePlan'])->name('deletePlan');
+
+Route::get('/admin/plans-and-prices/update-plan', [AdminController::class, 'updatePlan'])->name('updatePlan');
 
 //route auth groups
 Route::group(['middleware' => 'adminauth'], function () {

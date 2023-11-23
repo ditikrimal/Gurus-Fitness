@@ -42,9 +42,9 @@
             </a>
             </li>
             @auth <li>
-                    <a href="/listings">
+                    <a href="/user/my-subscriptions">
                         <i class="fa-solid fa-list"></i>
-                        Our Listings
+                        My Subscriptions
                     </a>
                 </li>
 
@@ -56,12 +56,7 @@
                 </li>
 
 
-                <li>
-                    <a href="/reservations">
-                        <i class="fa-solid fa-calendar"></i>
-                        reservations
-                    </a>
-                </li>
+
 
                 <li>
                     <a href="/about-us">
@@ -93,10 +88,9 @@
                 </li>
             @else
                 <li>
-                    <a href="/listings">
+                    <a href="/user/my-subscriptions">
                         <i class="fa-solid fa-list"></i>
-                        Our Listings
-                    </a>
+                        My Subscriptions </a>
                 </li>
 
                 <li>
@@ -108,12 +102,6 @@
                 </li>
 
 
-                <li>
-                    <a href="/reservations">
-                        <i class="fa-solid fa-calendar"></i>
-                        reservations
-                    </a>
-                </li>
 
                 <li>
                     <a href="/user">

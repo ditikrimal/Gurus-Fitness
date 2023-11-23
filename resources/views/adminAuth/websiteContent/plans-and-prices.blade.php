@@ -13,7 +13,7 @@
 
                 <button class="search-button" type="submit"><i class="fa-solid fa-search"></i> </button>
             </form>
-            <div> <button class="delete-selected-button" data-url="{{ route('newsEventsDelete') }}"
+            <div> <button class="delete-selected-button" data-url="{{ route('deletePlan') }}"
                     id="delete-selected-button">Delete
                     Selected</button>
                 <button class="add-user-button" id="add-plan-button">Add New Plan</button>
@@ -22,29 +22,55 @@
         </div>
         <div class="plans-and-prices-fetched-content">
             @foreach ($plans as $plan_item)
-                <div class="plans-and-prices-box">
-                    <input id="token" name="_token" type="hidden" value="{{ csrf_token() }}">
-                    <div class="select-div-plan">
-                        <input class="select" data-id="{{ $plan_item->id }}" id="selectAllPlan" name="record"
-                            type="checkbox">
-                        <label for="record">Select</label>
+                <form action="/admin/plans-and-prices/update-plan">
+                    <div class="plans-and-prices-box">
+                        @if ($errors->any())
+                            <script>
+                                var flashMessage = document.getElementById("flash-message-content");
+                                flashMessage.classList.add("active");
+                                flashMessage.style.background = "red";
+                                flashMessage.innerHTML = '{{ $errors->first() }}';
+                                setTimeout(function() {
+                                    flashMessage.classList.remove("active");
+                                }, 3000);
+                            </script>
+                        @endif
+                        @if ($success ?? '')
+                            <script>
+                                var flashMessage = document.getElementById("flash-message-content");
+                                flashMessage.classList.add("active");
+                                flashMessage.style.background = "green";
+                                flashMessage.innerHTML = 'Success';
+                                setTimeout(function() {
+                                    flashMessage.classList.remove("active");
+                                }, 3000);
+                            </script>
+                        @endif
+
+                        <input id="token" name="_token" type="hidden" value="{{ csrf_token() }}">
+                        <div class="select-div-plan">
+                            <input class="select" data-id="{{ $plan_item->id }}" id="selectAllPlan" name="record"
+                                type="checkbox">
+                            <label for="record">Select</label>
+
+                        </div>
+                        <input name="plan_id" type="hidden" value="{{ $plan_item->id }}">
+                        <div class="plan-title">
+                            <input name="plan_title" placeholder="Plan Title" type="text"
+                                value="{{ $plan_item->plan_title }}">
+                        </div>
+                        <div class="plan-prices">
+                            <input name="plan_prices" placeholder="Plan Price" type="text"
+                                value="{{ $plan_item->plan_prices }}">
+                        </div>
+                        <div class="plan-features"> <input name="plan_features"
+                                placeholder="Plan Features (Seperated with comma)" type="text "
+                                value="{{ $plan_item->plan_features }}">
+                        </div>
+                        <button type="submit">Update</button>
 
                     </div>
-                    <div class="plan-title">
-                        <input name="plan_title" placeholder="Plan Title" type="text"
-                            value="{{ $plan_item->plan_title }}">
-                    </div>
-                    <div class="plan-prices">
-                        <input name="plan_prices" placeholder="Plan Price" type="text"
-                            value="{{ $plan_item->plan_prices }}">
-                    </div>
-                    <div class="plan-features"> <input name="plan_features"
-                            placeholder="Plan Features (Seperated with comma)" type="text "
-                            value="{{ $plan_item->plan_features }}">
-                    </div>
-                    <button>Update</button>
-
-                </div>
+                </form>
             @endforeach
 
         </div>
@@ -78,4 +104,16 @@
             </form>
         </div>
     </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var route = "/admin/plans-and-prices/delete-news"; // Set the desired route
+
+            var button = document.getElementById("delete-selected-button");
+            var flashMessage = document.getElementById("flash-message-content");
+
+            button.addEventListener("click", function() {
+                deleteSelectedRecords(route);
+            });
+        });
+    </script>
 @endsection

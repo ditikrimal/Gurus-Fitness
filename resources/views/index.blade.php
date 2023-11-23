@@ -10,7 +10,16 @@
                     Get started with a free trial and experience the benefits of our gym and fitness classes with
                     reasonable prices.
                 </div>
-                <div class="hero-btn"> <a href="/user">Login to Continue</a>
+
+                <div class="hero-btn">
+                    @auth
+
+                        <a href="/#plans">Browse Plans</a>
+                    @endauth
+                    @guest
+                        <a href="/user">Login to Continue</a>
+                    @endguest
+
                 </div>
             </div>
             <div class="hero-image">
@@ -85,7 +94,7 @@
             </div>
         </div>
     </section>
-    <section class="plans-and-prices">
+    <section class="plans-and-prices" id="plans">
         <div class="plans-and-prices-heading">
             <h1>Choose the perfect plan for you</h1>
             <p>We offer a range of affordable and flexible subscription plans to help you achieve your fitness goals.
@@ -93,139 +102,40 @@
         </div>
 
         <div class="plans-prices-parent">
-            <div class="plans-prices-box">
-                <div class="plans-prices-container">
-                    <div class="plan-title">
-                        Basic
+            @foreach ($plans_prices as $plan)
+                @php
+                    $plan_feature = explode(',', "$plan->plan_features");
+                @endphp
+                <div class="plans-prices-box">
+                    <div class="plans-prices-container">
+                        <div class="plan-title">
+                            {{ $plan->plan_title }}
+                        </div>
+                        <div class="price-heading">Rs. {{ $plan->plan_prices }}
+                        </div>
+                        <div class="plans-prices-content">
+                            <p>Join Now</p>
+                            <hr>
+
+                            <ul>
+                                @foreach ($plan_feature as $feature)
+                                    <li>
+                                        {{ $feature }}
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
                     </div>
-                    <div class="price-heading">Rs. 3,000</div>
-                    <div class="plans-prices-content">
-                        <p>Join Now</p>
-                        <hr>
-
-                        <ul>
-                            <li>
-                                Start today
-                            </li>
-                            <li>Access to all equipments</li>
-                            <li>All the basic gym features</li>
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="plan-prices-button">
-                    <a href="">
-                        Get Started
-                    </a>
-                </div>
-            </div>
-
-            <div class="plans-prices-box">
-                <div class="plans-prices-container">
-                    <div class="plan-title">
-                        Zumbastic
-                    </div>
-                    <div class="price-heading">Rs. 5,000</div>
-                    <div class="plans-prices-content">
-                        <p>Join Now</p>
-                        <hr>
-
-                        <ul>
-                            <li>
-                                Start today
-                            </li>
-                            <li>Basic gym</li>
-                            <li><strong>4 </strong>Zumba classes a week </li>
-
-                        </ul>
+                    <div class="plan-prices-button">
+                        <a href="/user/{{ $plan->id }}/subscription">
+                            Get Started
+                        </a>
                     </div>
                 </div>
-                <div class="plan-prices-button">
-                    <a href="">
-                        Get Started
-                    </a>
-                </div>
-            </div>
+            @endforeach
 
-            <div class="plans-prices-box">
-                <div class="plans-prices-container">
-                    <div class="plan-title">
-                        Yogastic
-                    </div>
-                    <div class="price-heading">Rs. 5,000</div>
-                    <div class="plans-prices-content">
-                        <p>Join Now</p>
-                        <hr>
 
-                        <ul>
-                            <li>
-                                Start today
-                            </li>
-                            <li>Basic gym</li>
-                            <li><strong>4</strong> yoga classes a week</li>
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="plan-prices-button">
-                    <a href="">
-                        Get Started
-                    </a>
-                </div>
-            </div>
-
-            <div class="plans-prices-box elite-box">
-                <div class="plans-prices-container">
-                    <div class="plan-title">
-                        Elite
-                    </div>
-                    <div class="price-heading">Rs. 8,000</div>
-                    <div class="plans-prices-content">
-                        <p>Join Now</p>
-                        <hr>
-
-                        <ul>
-                            <li>
-                                Start today
-                            </li>
-                            <li>All the gym features</li>
-                            <li>Unlimited zumba classes</li>
-                            <li>Unlimited yog classes</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="plan-prices-button">
-                    <a href="">
-                        Get Started
-                    </a>
-                </div>
-            </div>
-
-            <div class="plans-prices-box">
-                <div class="plans-prices-container">
-                    <div class="plan-title">
-                        Platinum
-                    </div>
-                    <div class="price-heading">Rs. 12,000</div>
-                    <div class="plans-prices-content">
-                        <p>Join Now</p>
-                        <hr>
-
-                        <ul>
-                            <li>
-                                Start today
-                            </li>
-                            <li>Access to all the plans</li>
-                            <li>Unlimited services</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="plan-prices-button">
-                    <a href="">
-                        Get Started
-                    </a>
-                </div>
-            </div>
         </div>
     </section>
 </x-layout>

@@ -144,14 +144,29 @@ class AdminController extends Controller
         $plan->plan_title = $inputData['plan_title'];
         $plan->plan_prices = $inputData['plan_prices'];
         $plan->plan_features = $inputData['plan_features'];
-
         $plan->save();
-
         return redirect()->back()->with('success', 'Plan added successfully.');
-
-
-
-
+    }
+    public function deletePlan(Request $request)
+    {
+        $ids = $request->input('ids');
+        PlansAndPrice::whereIn('id', $ids)->delete();
+        return response()->json(['message' => 'Selected Plan deleted successfully'], 200);
+    }
+    public function updatePlan(Request $request)
+    {
+        $inputData = $request->validate([
+            'plan_title' => 'required',
+            'plan_prices' => 'required',
+            'plan_features' => 'required',
+        ], [
+            'plan_title.required' => 'Empty fields',
+            'plan_prices.required' => 'Empty fields',
+            'plan_features.required' => 'Empty fields',
+        ]);
+        $plan = PlansAndPrice::find($request['plan_id']);
+        $plan->update($inputData);
+        return redirect()->back()->with('success', 'Plan updated successfully.');
     }
 
     public function AdminAboutUs()
