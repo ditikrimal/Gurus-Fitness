@@ -225,9 +225,6 @@
         </script>
         <section class="otpSEC" id="otpVerify">
             <div class="OTPbox">
-                <meta charset="UTF-8" />
-                <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
                 <form class="OTPForm" id="otpForm">
                     @csrf
                     @method('post')
@@ -238,21 +235,15 @@
                     </div>
 
 
-                    <p id='RepMsg3'>
+                    <p id='RepMsg3' style="display: none">
                     </p>
 
                     <input maxlength="6" minlenght="6" name="otp" placeholder="OTP" type="number">
                     <div class="Btns">
                         <button class="verifyBtn" id="verifyBtn" type="submit">Verify</button>
                     </div>
-                    <div class="Btns">
 
-                        <button class="resendBtn" id="resendBtn" onclick="otpTimer()"; value="resendOTP">Resend
-                            OTP</button>
 
-                    </div>
-                    <p id="otpTimer" style="font-weight:400"> Resend OTP in <span id="countdowntimer"
-                            style="color:red;font-weight:700 !important;">60 </span> Seconds</p>
                 </form>
             </div>
         </section>
@@ -266,19 +257,27 @@
                         type: 'POST',
                         data: formData,
                         beforeSend: function() {
+
+
+                            $('#RepMsg3').css({
+                                'display': 'block'
+                            });
                             $('#RepMsg3').fadeIn();
                             $('#RepMsg3').html(
                                 '<i class="fa-solid fa-check" style="color:green; font-size:11px;"></i> <span style="color:green;"> Verifying OTP...</span>'
                             );
+
                         },
                         success: function(response) {
+                            $('#otpVerify').removeClass('active');
+
                             $('#doneSEC').addClass('active');
-                            $('#otpVeriyf').removeClass('active');
                             setTimeout(function() {
                                 window.location.replace('/');
-                            }, 6000);
+                            }, 4000);
                         },
                         error: function(response) {
+
                             if (response.status === 422) {
                                 var errors = response.responseJSON.errors;
                                 if (errors.otp) {
@@ -301,16 +300,19 @@
                 });
             });
         </script>
-        <section class="doneSEC" id="doneSEC">
-            <div class="doneBox">
-                <h1>Congratulations </h1>
-                <span>Your account has been created!</span>
 
-                <h2>You wil be redirected shortly.</h2>
-                <h3>OR</h3>
-                <a href="/">Proceed to Login</a>
-            </div>
-        </section>
     </section>
 
 </x-layout>
+<section class="doneSEC" id="doneSEC">
+    <div class="doneBox">
+        <i class="fa-solid fa-check fa-beat"></i>
+        <h1>Congratulations !
+        </h1>
+        <span>Your account has been created successfully</span>
+        <br>
+        <h2>You wil be redirected shortly.</h2>
+        <span>OR</span>
+        <button class="done-box-button" href="/">Proceed to Login</button>
+    </div>
+</section>

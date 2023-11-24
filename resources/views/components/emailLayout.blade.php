@@ -13,7 +13,7 @@
         <tr>
             <td style=" text-align: center;padding-top:20px">
                 <span style="font-size:35px; font-weight:600; text-transform: uppercase">Gurus <span
-                        style="color: red">Fitness</span></span>
+                        style="color: #007bff;">Fitness</span></span>
             </td>
         </tr>
         <hr style="height: 0.8px; background-color:black">
@@ -27,7 +27,7 @@
             <th>
             <td style="padding: 10px 20px; ">
                 <p>Thank you for using our service.</p>
-                <p>Best regards,<br> Gurus <span style="color: red">Fitness</span></p>
+                <p>Best regards,<br> Gurus <span style="color: #007bff;">Fitness</span></p>
             </td>
             </th>
             <th>
