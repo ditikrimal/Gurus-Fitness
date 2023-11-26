@@ -151,7 +151,6 @@ Route::group(['middleware' => 'adminauth'], function () {
 
     Route::get('/admin/home', [AdminController::class, 'AdminDashboard']);
 
-    Route::get('/admin/home/dashboard', [AdminController::class, 'AdminDashboard']);
 
     Route::get('/admin/home/my-profile', [AdminController::class, 'AdminProfile']);
 
@@ -159,7 +158,6 @@ Route::group(['middleware' => 'adminauth'], function () {
 
     Route::get('admin/website-content/plans-and-prices', [AdminController::class, 'AdminPlansPrices']);
 
-    Route::get('/admin/website-content/about-us', [AdminController::class, 'AdminAboutUs']);
 
     Route::get('/admin/website-content/notices', [AdminController::class, 'AdminNotices']);
 

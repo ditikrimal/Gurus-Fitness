@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserInfo;
+use App\Models\UserSubscription;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +25,31 @@ class AdminController extends Controller
 
     public function AdminDashboard()
     {
-        return view('adminAuth.home.dashboard');
+        //get customers, admins, and subscriptions count
+//count number of entries in UserInfo
+        $userAccounts = UserInfo::all()->count();
+        $admins = Admin::all()->count();
+        $subscriptions = UserSubscription::where('payment_status', 'success')->count();
+        $totalAmount = UserSubscription::where('payment_status', 'success')->sum('payment_amount');
+        $news = News::all()->count();
+        $events = Event::all()->count();
+        $notices = Notice::all()->count();
+        $plans = PlansAndPrice::all()->count();
+
+
+        return view(
+            'adminAuth.home.dashboard',
+            [
+                'userAccounts' => $userAccounts,
+                'admins' => $admins,
+                'subscriptions' => $subscriptions,
+                'totalAmount' => $totalAmount,
+                'news' => $news,
+                'events' => $events,
+                'notices' => $notices,
+                'plans' => $plans
+            ]
+        );
     }
     public function AdminProfile()
     {
@@ -175,11 +201,25 @@ class AdminController extends Controller
     }
     public function AdminUserAccounts()
     {
-        return view('adminAuth.customerManage.user-accounts');
+        $user = UserInfo::all();
+        return view(
+            'adminAuth.customerManage.user-accounts',
+            [
+                'users' => $user
+            ]
+        );
     }
     public function AdminSubscriptions()
     {
-        return view('adminAuth.customerManage.subscriptions');
+
+        $subscriptions = UserSubscription::where('payment_status', 'success')->get();
+        return view(
+            'adminAuth.customerManage.subscriptions',
+            [
+                'subscriptions' => $subscriptions
+
+            ]
+        );
     }
     public function AdminUsers()
     {

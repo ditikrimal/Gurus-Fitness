@@ -9,7 +9,7 @@
     <link href="{{ asset('css/adminapp.css') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Gurus Fitness </title>
 </head>
 
 <body>
@@ -33,16 +33,11 @@
             </div>
             <div class="sidebar-links">
                 <ul class="sideBarUl">
-                    <li class="sideBarLinks title">Home</li>
+                    <li class="sideBarLinks title"> <a href="/admin/home"> <i class="fa-solid fa-home"></i>Dashboard</a>
+                    </li>
 
                     <li class="sideBarLinks ">
-                        <a href="/admin/home/dashboard"> <i class="fa-solid fa-gauge"></i>Dashboard</a>
                     </li>
-                    <li class="sideBarLinks" style="margin-top: 0.5rem">
-                        <a href="/admin/home/my-profile">
-                            <i class="fa-solid fa-user-gear"></i>My Profile</a>
-                    </li>
-
 
                     <li class="sideBarLinks title">Website Content Manage</li>
 
@@ -60,10 +55,6 @@
                             Plans And Prices</a>
                     </li>
 
-                    <li class="sideBarLinks">
-                        <a href="/admin/website-content/about-us"> <i class="fa-solid fa-circle-info"></i>
-                            About Us</a>
-                    </li>
 
 
                     <li class="sideBarLinks title">Customer Manage</li>

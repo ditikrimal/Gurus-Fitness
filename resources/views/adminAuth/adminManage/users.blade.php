@@ -18,13 +18,15 @@
                     Selected</button>
             </div>
         </div>
+
+        <br>
         <div class="users-table">
             <table id="admin-user-table">
                 <tr>
                     <th>
                         <input class="select" id="selectAll" name="" type="checkbox">
                     </th>
-                    <th>ID</th>
+                    <th>S.N</th>
                     <th>Full Name</th>
                     <th>Username</th>
                     <th>Created at</th>
