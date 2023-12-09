@@ -12,6 +12,11 @@
 *:focus {
     outline: none;
 }
+:root {
+    --primary: #007bff;
+    --light: #4899e9ee;
+    --dark: #212226;
+}
 
 a {
     color: black;
