@@ -93,10 +93,11 @@
                     </div>
                     <div class="input-box-new-user">
                         <select id="role" name="role">
+                            <option value="Admin">Admin</option>
                             @if (Auth::guard('admin')->user()->role == 'Super-Admin')
                                 <option value="Super-Admin">Super-Admin</option>
                             @endif
-                            <option value="Admin">Admin</option>
+
                         </select>
                     </div>
 

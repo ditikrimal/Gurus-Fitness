@@ -33,19 +33,19 @@
                 </tr>
                 @foreach ($subscriptions as $subscription)
                     <tr class="retrieved-row">
-                        <td>
+                        <td data-cell="Checkbox">
                             <input id="token" name="_token" type="hidden" value="{{ csrf_token() }}">
                             <input class="select" data-id="" id="" name="record" type="checkbox">
                         </td>
-                        <td>
+                        <td data-cell="S.N">
                             {{ $a++ }}
                         </td>
-                        <td> {{ $subscription->user->fullName }} </td>
-                        <td>{{ $subscription->plan->plan_title }}</td>
-                        <td>{{ $subscription->start_date }}</td>
-                        <td>{{ $subscription->end_date }}</td>
-                        <td>Rs. {{ $subscription->payment_amount }}</td>
-                        <td>{{ $subscription->payment_id }}</td>
+                        <td data-cell="Full Name"> {{ $subscription->user->fullName }} </td>
+                        <td data-cell="Subscribed Plan">{{ $subscription->plan->plan_title }}</td>
+                        <td data-cell="Start Date">{{ $subscription->start_date }}</td>
+                        <td data-cell="End Date">{{ $subscription->end_date }}</td>
+                        <td data-cell="Payment Amount">Rs. {{ $subscription->payment_amount }}</td>
+                        <td data-cell="Payment ID">{{ $subscription->payment_id }}</td>
                     </tr>
                 @endforeach
             </table>

@@ -6,7 +6,7 @@
     <section class="dashboard-section">
         <h1 class="admin-section-title">Welcome to Admin DAshboard</h1>
         <div class="dashboard-box">
-            <div class="count-box total-amount">
+            <div class="count-box total-amount" onclick="location.href='/admin/customer-manage/subscriptions'">
                 <div class="count-box-title">
                     <h2>Total Revenue</h2>
                     <span class="material-symbols-outlined amount">
@@ -17,7 +17,7 @@
                 </div>
 
             </div>
-            <div class="count-box user-accounts">
+            <div class="count-box user-accounts" onclick="location.href='/admin/customer-manage/user-accounts'">
                 <div class="count-box-title">
                     <h2>User Accounts</h2>
                     <span class="material-symbols-outlined amount">

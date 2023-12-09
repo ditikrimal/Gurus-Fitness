@@ -361,6 +361,7 @@ body {
     gap: 2.2rem;
     flex-wrap: wrap;
 }
+
 .count-box {
     display: flex;
     flex-direction: column;
@@ -372,6 +373,12 @@ body {
     box-shadow: 6px -1px 37px 28px rgba(0, 0, 0, 0.26);
     -webkit-box-shadow: 6px -1px 37px 28px rgba(0, 0, 0, 0.26);
     -moz-box-shadow: 6px -1px 37px 28px rgba(0, 0, 0, 0.26);
+}
+
+.count-box:hover {
+    transform: scale(1.07);
+    transition: all 0.5s ease;
+    cursor: pointer;
 }
 
 .count-box-title {
@@ -495,7 +502,9 @@ body {
     font-size: 0.95rem;
     font-weight: 400;
     padding: 0.8rem 1rem;
-    border-bottom: solid #32343a 0.00001rem;
+}
+.users-table tr:nth-of-type(2n) {
+    background-color: rgba(55, 55, 55, 0.5);
 }
 .select {
     cursor: pointer;
@@ -795,10 +804,45 @@ body {
         margin-left: 0%;
         flex-basis: 100%;
     }
+    .admin-app-content {
+        padding: 2rem;
+    }
     .sidebar-ham {
         display: block;
     }
     .form-box {
         width: 100%;
+    }
+    th {
+        display: none;
+    }
+    td {
+        display: block;
+        text-align: center;
+    }
+    .retrieved-row td {
+        display: flex;
+        gap: 0.5rem;
+    }
+    td::before {
+        content: attr(data-cell) ":   ";
+        float: left;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    td:first-child {
+        padding-top: 2rem;
+    }
+    td:last-child {
+        padding-bottom: 2rem;
+    }
+    tr:nth-of-type(2n) {
+        border: none;
+        background-color: rgba(59, 59, 59, 0.2);
+    }
+    .plans-and-prices-fetched-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
     }
 }

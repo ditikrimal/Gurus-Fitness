@@ -34,19 +34,19 @@
                 @endphp
                 @foreach ($users as $user)
                     <tr class="retrieved-row">
-                        <td>
+                        <td data-cell="Checkbox">
                             <input id="token" name="_token" type="hidden" value="{{ csrf_token() }}">
                             <input class="select" data-id="{{ $user->id }}" id="" name="record"
                                 type="checkbox">
                         </td>
-                        <td>
+                        <td data-cell="S.N">
                             {{ $a++ }}
                         </td>
-                        <td>{{ $user->fullName }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->address }}</td>
-                        <td>{{ $user->city }}</td>
-                        <td>{{ $user->phone }}</td>
+                        <td data-cell="Full Name">{{ $user->fullName }}</td>
+                        <td data-cell="Email">{{ $user->email }}</td>
+                        <td data-cell="Address">{{ $user->address }}</td>
+                        <td data-cell="City">{{ $user->city }}</td>
+                        <td data-cell="Phone Number">{{ $user->phone }}</td>
                     </tr>
                 @endforeach
 

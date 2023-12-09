@@ -764,6 +764,7 @@ footer {
     z-index: 1080;
     padding: 1rem 2rem;
     display: flex;
+    gap: 5rem;
     justify-content: space-between;
 }
 .user-circle1 {
@@ -813,9 +814,9 @@ footer {
 
 .user-content-image {
     margin-left: 50px;
-    height: 90vh;
+    height: 85vh;
     position: relative;
-    border-radius: 10px;
+    border-radius: 3.3rem;
     overflow: hidden;
 }
 
@@ -886,7 +887,7 @@ footer {
 .box {
     position: relative;
     width: 28%;
-    max-height: 650px;
+    max-height: 620px;
     max-width: 1020px;
     height: auto;
     background-color: rgb(237, 237, 237);
@@ -896,8 +897,8 @@ footer {
 
 .inner-box {
     position: absolute;
-    width: calc(200% - 4.1rem);
-    height: calc(100% - 4.1rem);
+    width: calc(200% - 5rem);
+    height: calc(100% - 3.4rem);
     top: 50%;
     left: 100%;
     transform: translate(-50%, -50%);
